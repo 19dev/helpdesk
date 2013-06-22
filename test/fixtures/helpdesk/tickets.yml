@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  desc: MyText
+  user_id: 1
+  patron_id: 1
+  status: MyString
+  assigned_id: 1
+  close_date: 2013-06-22
+
+two:
+  title: MyString
+  desc: MyText
+  user_id: 1
+  patron_id: 1
+  status: MyString
+  assigned_id: 1
+  close_date: 2013-06-22
