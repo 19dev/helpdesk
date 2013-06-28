@@ -2,8 +2,9 @@ require_dependency "helpdesk/application_controller"
 
 module Helpdesk
   class TicketsController < ApplicationController
-    # GET /tickets
-    # GET /tickets.json
+    
+    before_filter :require_login
+
     def index
       @tickets = Ticket.all
   

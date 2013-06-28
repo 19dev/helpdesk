@@ -1,14 +1,12 @@
 <h1>Listing tickets</h1>
 
-<table>
+<table class="table-condensed">
   <tr>
-    <th>Title</th>
-    <th>Desc</th>
-    <th>User</th>
-    <th>Patron</th>
-    <th>Status</th>
-    <th>Assigned</th>
-    <th>Close date</th>
+    <th class="span5">Title</th>
+    <th class="span1">User</th>
+    <th class="span1">Status</th>
+    <th class="span3">Assigned</th>
+    <th class="span2">Close date</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,9 +15,7 @@
 <% @tickets.each do |ticket| %>
   <tr>
     <td><%= ticket.title %></td>
-    <td><%= ticket.desc %></td>
     <td><%= ticket.user_id %></td>
-    <td><%= ticket.patron_id %></td>
     <td><%= ticket.status %></td>
     <td><%= ticket.assigned_id %></td>
     <td><%= ticket.close_date %></td>
