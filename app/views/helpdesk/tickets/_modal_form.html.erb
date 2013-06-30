@@ -1,0 +1,22 @@
+<div class="row-fluid">
+
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+    <h4><%= t("tickets.defaults.edit_page_header") %></h4>
+  </div>
+
+	<%= simple_form_for @ticket, validate: true, remote: true do |f| %>
+
+    <div class="modal-body">
+	    <%= f.error_notification %>
+      <%= f.association :assigned, label: t("tickets.label.assigned"), label_method: :to_s, value_method: :id, include_blank: false, collection: current_patron.users.active.all(order: 'name'), prompt: "Assing this request to" %>
+    </div>
+
+    <div class="modal-footer">
+      <a href="#" class="btn" data-dismiss="modal" aria-hidden="true"><%= t("defaults.action.close") %></a>
+      <%= f.submit t("tickets.action.assign"), class: 'btn btn-success' %>
+    </div>
+	<% end %>
+
+</div>
+<script type="text/javascript">$("#edit_ticket_<%= @ticket.id %>").validate();</script>

@@ -1,40 +1,6 @@
-<p id="notice"><%= notice %></p>
+<div class="row-fluid">
 
-<p>
-  <b>Title:</b>
-  <%= @ticket.title %>
-</p>
+  <%= page_header_helper(t("tickets.defaults.show_page_header")) %>
+  <%= render partial: "profile", locals: { ticket: @ticket } %>
 
-<p>
-  <b>Desc:</b>
-  <%= @ticket.desc %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @ticket.user_id %>
-</p>
-
-<p>
-  <b>Patron:</b>
-  <%= @ticket.patron_id %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @ticket.status %>
-</p>
-
-<p>
-  <b>Assigned:</b>
-  <%= @ticket.assigned_id %>
-</p>
-
-<p>
-  <b>Close date:</b>
-  <%= @ticket.close_date %>
-</p>
-
-
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+</div>

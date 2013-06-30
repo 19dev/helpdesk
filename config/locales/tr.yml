@@ -1,0 +1,37 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+tr:
+  tickets:
+    defaults:
+      page_header: "Talep Yönetimi"
+      intro_message: ""
+      last_records_title: "En Son Oluşturulmuş Talepler"
+      new_record_label: "Yeni Talep Oluştur"
+      edit_record_label: "Talebi Güncelle"
+      fullsearch_placeholder: "Talep ile ilgili birşeyler yazın"
+      show_page_header: "Talep Bilgisi"
+      edit_page_header: "Talep Bilgisi Güncelleme"
+      new_page_header: "Yeni Talep Oluşturma"
+      small_form_help: ""
+    label:
+      title: "Talep Başlığı"
+      desc: "Talep Detayları"
+      status: "Talep Durumu"
+      assigned: "Çözüm Sorumlusu"
+      close_date: "Kapama Tarihi"
+      created_at: "Talep Tarihi"
+      user: "Talep Sahibi"
+      not_assigned_yet: "Kimseye Atanmamış"
+      assign_to_someone: "Birisine Atayabilirsiniz"
+    placeholder:
+      desc: "Talebiniz ile ilgili detayları girebilirsiniz"
+    hint:
+      title: "Kolayca anlaşılabilecek bir başlık belirtin"
+    action:
+      create: "Talep Bilgisini Kaydet"
+      assign: "Talebi Ata"
+    status:
+      open: "Aktif-Bekliyor"
+      assigned: "Atanmış-Çalışılıyor"
+      closed: "Kapatılmış"

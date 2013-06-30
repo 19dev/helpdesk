@@ -1,0 +1,10 @@
+<div class="btn-group">
+  <button class="btn"><%= t("defaults.link.action") %></button>
+  <button class="btn dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><%= link_to t("tickets.defaults.edit_record_label"), edit_ticket_path(ticket) %></li>
+    <li><%= link_to t("tickets.label.assign_to_someone"), edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %></li>
+  </ul>
+</div>

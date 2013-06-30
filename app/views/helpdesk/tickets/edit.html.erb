@@ -1,6 +1,7 @@
-<h1>Editing ticket</h1>
+<div class="row-fluid">
 
-<%= render 'form' %>
+  <%= page_header_helper(t("tickets.defaults.edit_page_header")) %>
 
-<%= link_to 'Show', @ticket %> |
-<%= link_to 'Back', tickets_path %>
+  <%= render 'form' %>
+
+</div>
