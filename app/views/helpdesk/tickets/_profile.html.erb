@@ -1,42 +1,5 @@
-<div class="row-fluid">
-  <div class="span1">
-    <%= image_tag "/assets/def_company_pic.png", class: "thumbnail" %>
-  </div>
-  <div class="span8">
-    <p>
-      <strong><%= ticket.title %></strong>
-      <br>
-      <small><%= ticket.desc %></small>
-    </p>
-    <p>
-      <%= link_to user_name(ticket.user), main_app.user_path(ticket.user) %>
-      <%= created_time(ticket.created_at) %>
-      <% unless ticket.assigned_id.nil? %>
-      <%= "#{user_name(ticket.assigned)} - #{created_time(ticket.close_date)}" %>
-      <% else %>
-        <span class="pull-right">
-          <%= t("tickets.label.not_assigned_yet") %>,
-          <%= link_to t("tickets.label.assign_to_someone"), edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
-        </span>
-      <% end %>
-    </p>
-    <!--table class="table-condensed">
-      <tbody>
-        <tr style="line-height:15px;"><td><strong><%#= ticket.title %></strong></td></tr>
-        <tr style="line-height:14px;color:#666"><td><%#= ticket.desc %></td></tr>
-        <tr style="line-height:14px;"><td><%#= "#{user_name(ticket.user)} - #{created_time(ticket.created_at)}" %>
-          <span class="pull-right">
-          Not Assigned yet, <%#= link_to "Assign to someone", edit_ticket_path(ticket) %></span></td>
-        </tr>
-      </tbody>
-    </table-->
-  </div>
-  <div class="span3 btn-toolbar">
-    <div class="btn-group">
-      <%= link_to t("tickets.defaults.edit_record_label"), edit_ticket_path(ticket), class: "btn" %>
-    </div>
-    <%= render partial: "actions", locals: { ticket: ticket } %>
-  </div>
+<div class="row-fluid" id="ticket_<%= ticket.id %>_profile">
+  <%= render partial: "header", locals: { ticket: ticket } %>
 </div>
 
 <div class="row-fluid">

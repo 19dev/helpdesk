@@ -4,7 +4,35 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    <li><%= link_to t("tickets.defaults.edit_record_label"), edit_ticket_path(ticket) %></li>
-    <li><%= link_to t("tickets.label.assign_to_someone"), edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %></li>
+    <% if ticket.status == "open" %>
+    <li>
+    	<% if ticket.assigned_id.nil? %>
+    	  <%= link_to edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" do %>
+    	    <i class="icon-user"></i> <%= t("tickets.label.assign_to_someone") %>
+    	  <% end %>
+    	<% else %>
+    	  <%= link_to edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" do %>
+    	    <i class="icon-random"></i><%= t("tickets.label.change_responsible") %>
+    	  <% end %>
+    	<% end %>
+    </li>
+    <% end %>
+    <li>
+      <% if ticket.status == "closed" %>
+        <%= link_to ticket_path(ticket, "ticket[status]" => "open"), method: "put" do %>
+        <i class="icon-folder-open"></i><%= t("tickets.action.reopen") %>
+        <% end %>
+      <% else %>
+        <%= link_to ticket_path(ticket, "ticket[status]" => "closed"), method: "put" do %>
+          <i class="icon-folder-close"></i><%= t("tickets.action.close") %>
+        <% end %>
+      <% end %>
+    </li>
+    <hr>
+    <li>
+      <%= link_to "#" do %>
+        <i class="icon-remove"></i><%= t("tickets.action.delete") %>
+      <% end %>
+    </li>
   </ul>
 </div>

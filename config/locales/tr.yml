@@ -23,7 +23,8 @@ tr:
       created_at: "Talep Tarihi"
       user: "Talep Sahibi"
       not_assigned_yet: "Kimseye Atanmamış"
-      assign_to_someone: "Birisine Atayabilirsiniz"
+      assign_to_someone: "Çözüm Sorumlusu Belirleyin"
+      change_responsible: "Çözüm Sorumlusunu Değiştir"
     placeholder:
       desc: "Talebiniz ile ilgili detayları girebilirsiniz"
     hint:
@@ -31,6 +32,9 @@ tr:
     action:
       create: "Talep Bilgisini Kaydet"
       assign: "Talebi Ata"
+      close: "Talebi Kapat"
+      reopen: "Talebi Tekrar Aç"
+      delete: "Talebi Sil"
     status:
       open: "Aktif-Bekliyor"
       assigned: "Atanmış-Çalışılıyor"

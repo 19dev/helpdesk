@@ -21,9 +21,8 @@ module Helpdesk
 				  end
           column :close_date, title: t("tickets.label.close_date"), html: { th: { class: "span1" } }
 				  column title: "", html: { th: { class: "span1" } } do |ticket|
-				  	concat link_to t("defaults.link.edit"), edit_ticket_path(ticket) unless options[:hide_edit_link]
-				  	#concat "|"
-				  	#concat link_to t("defaults.link.destroy"), ticket, method: :delete, data: {confirm: t("defaults.messages.destroy_confirm") } if options[:show_delete_link]
+				  	#render partial: "helpdesk/tickets/actions", locals: { ticket: ticket }
+				  	link_to t("defaults.link.edit"), edit_ticket_path(ticket) unless options[:hide_edit_link]
 				  end
 				end
 			end

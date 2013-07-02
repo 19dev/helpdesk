@@ -8,8 +8,9 @@ module Helpdesk
 
     attr_accessible :assigned_id, :close_date, :desc, :status, :title
 
-    validates :title, presence: true
+    validates :title, presence: true, length: { maximum: 255 }
     validates :user_id, presence: true
+    validates :status, presence: true
 
     default_scope { where(patron_id: Patron.current_id) }
 

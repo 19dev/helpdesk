@@ -65,8 +65,10 @@ module Helpdesk
   
       respond_to do |format|
         if @ticket.update_attributes(params[:ticket])
-          format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
+          flash[:notice] = "Ticket was successfully updated."
+          format.html { redirect_to @ticket }
           format.json { head :no_content }
+          format.js   { }
         else
           format.html { render action: "edit" }
           format.json { render json: @ticket.errors, status: :unprocessable_entity }
