@@ -5,7 +5,7 @@ module Helpdesk
 			content = content_tag :div, class: "row-fluid", id: "tickets_list_div" do
 				table_for tickets, html: {class: "table table-bordered table-condensed", id: "tickets_list_table"} do
 				  column title: t("tickets.label.title"), html: { th: { class: "span4" }  } do |ticket|
-				  	link_to ticket.title, ticket_path(ticket)
+				  	link_to ticket.title, helpdesk.ticket_path(ticket)
 				  end
 				  column title: t("tickets.label.user"), html: { th: { class: "span1" } } do |ticket|
 				  	image_tag user_mini_avatar(ticket.user), class: "img-circle", title: user_name(ticket.user)
@@ -22,7 +22,7 @@ module Helpdesk
           column :close_date, title: t("tickets.label.close_date"), html: { th: { class: "span1" } }
 				  column title: "", html: { th: { class: "span1" } } do |ticket|
 				  	#render partial: "helpdesk/tickets/actions", locals: { ticket: ticket }
-				  	link_to t("defaults.link.edit"), edit_ticket_path(ticket) unless options[:hide_edit_link]
+				  	#link_to t("defaults.link.edit"), helpdesk.edit_ticket_path(ticket) unless options[:hide_edit_link]
 				  end
 				end
 			end

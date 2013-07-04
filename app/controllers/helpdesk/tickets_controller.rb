@@ -4,6 +4,7 @@ module Helpdesk
   class TicketsController < ApplicationController
     
     before_filter :require_login
+    before_filter(:only => [:index]) { |c| c.set_tab "ticketnavigator" }
 
     def index
       @tickets = Ticket.all
