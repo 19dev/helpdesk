@@ -27,27 +27,35 @@ module Helpdesk
     end
 
     mapping do
-      indexes :id, index: :not_analyzed
+      indexes :id, type: :integer, index: :not_analyzed
       indexes :title, analyzer: 'snowball', boost: 100
       indexes :desc, analyzer: 'snowball'
       indexes :status, index: :not_analyzed
-      indexes :user_id, index: :not_analyzed
-      indexes :assigned_id, index: :not_analyzed
+      indexes :user do
+        indexes :name, analyzer: 'snowball'
+        indexes :surname, analyzer: 'snowball'
+        indexes :avatar, index: :not_analyzed
+      end
+      indexes :assigned do
+        indexes :name, analyzer: 'snowball'
+        indexes :surname, analyzer: 'snowball'
+        indexes :avatar, index: :not_analyzed
+      end
       indexes :close_date, type: 'date', index: :not_analyzed
       indexes :created_at, type: 'date', index: :not_analyzed
     end
 
     def to_indexed_json
-      {
-        id: id,
-        title: title,
-        desc: desc,
-        status: status,
-        user_id: user_id,
-        assigned_id: assigned_id,
-        close_date: close_date,
-        created_at: created_at
-      }.to_json
+      #{
+      #  id: id,
+      #  title: title,
+      #  desc: desc,
+      #  status: status,
+      #  assigned_id: assigned_id,
+      #  close_date: close_date,
+      #  created_at: created_at,
+      #}.to_json(include: { user: { only: [:name, :surname, :avatar_url] } })
+      to_json(include: { user: { only: [:name, :surname, :avatar] }, assigned: { only: [:name, :surname, :avatar] } })
     end
   end
 end

@@ -19,7 +19,7 @@
     </div>
     <%#= render 'posts/postlist', posts: ticket.posts %>
     <div class="row-fluid">
-      <ul id="Ticket_<%= ticket.id %>_posts">
+      <ul id="Helpdesk::Ticket_<%= ticket.id %>_posts">
         <%= render partial: "posts/post_listitem", collection: ticket.posts.latests, as: :post %>
       </ul>
     </div>
