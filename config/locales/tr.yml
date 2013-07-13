@@ -12,7 +12,7 @@ tr:
       fullsearch_placeholder: "Talep ile ilgili birşeyler yazın"
       show_page_header: "Talep Bilgisi"
       edit_page_header: "Talep Bilgisi Güncelleme"
-      new_page_header: "Yeni Talep Oluşturma"
+      new_page_header: "Yeni Talep"
       small_form_help: ""
     label:
       title: "Talep Başlığı"
