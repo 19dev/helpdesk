@@ -1,8 +1,8 @@
 <%= simple_form_for(@ticket, validate: true, html: { class: "form-horizontal" }) do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :title, label: t("tickets.label.title"), hint: t("tickets.hint.title"), input_html: { class: "input-xlarge" } %>
-  <%= f.input :desc, label: t("tickets.label.desc"), placeholder: t("tickets.placeholder.desc"), input_html: { rows: "2", class: "input-xlarge" } %>
+  <%= f.input :title, label: t("tickets.label.title"), hint: t("tickets.hint.title"), input_html: { class: "input-xxlarge" } %>
+  <%= f.input :desc, label: t("tickets.label.desc"), placeholder: t("tickets.placeholder.desc"), input_html: { rows: "6", class: "input-xxlarge" } %>
   <%#= f.input :status, as: :select, collection: Helpdesk::Ticket.ticket_status.map { |t| [t("tickets.status.#{t}"), t] } %>
   <%#= f.input :assigned_id %>
   <%#= f.input :close_date, as: :string %>
