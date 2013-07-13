@@ -16,6 +16,11 @@
     	  <% end %>
     	<% end %>
     </li>
+    <li>
+      <%= link_to "#" do %>
+        <i class="icon-remove"></i><%= t("tickets.action.delete") %>
+      <% end %>
+    </li>
     <% end %>
     <li>
       <% if ticket.status == "closed" %>
@@ -26,12 +31,6 @@
         <%= link_to ticket_path(ticket, "ticket[status]" => "closed"), method: "put" do %>
           <i class="icon-folder-close"></i><%= t("tickets.action.close") %>
         <% end %>
-      <% end %>
-    </li>
-    <hr>
-    <li>
-      <%= link_to "#" do %>
-        <i class="icon-remove"></i><%= t("tickets.action.delete") %>
       <% end %>
     </li>
   </ul>
