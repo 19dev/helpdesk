@@ -6,7 +6,7 @@
   <%= sub_header_with_search_form(t("tickets.defaults.last_records_title"), "tickets") %>
 
   <div id="tickets_list" class="row-fluid">
-    <%= render partial: "helpdesk/tickets/list", locals: { objects: @tickets, is_paginated: false } %>
+    <%= render partial: "helpdesk/tickets/list", locals: { objects: @tickets, is_paginated: true } %>
   </div>
 
 </div>

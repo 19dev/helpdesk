@@ -17,6 +17,7 @@ module Helpdesk
     validates :status, presence: true
 
     default_scope { where(patron_id: Patron.current_id) }
+    scope :latest, order("created_at desc")
 
     def self.ticket_status
     	%w[open assigned closed]
