@@ -64,6 +64,25 @@ module Helpdesk
     def update
       @ticket = Ticket.find(params[:id])
   
+      #ilk defa atama yapılıyor ise;
+      if @ticket.assigned_id.nil? && params[:ticket][:assigned_id].present?
+        @ticket.status = "assigned"
+      end
+      
+      #talep kapatılıyor ise
+      if params[:ticket][:status] == "closed"
+        @ticket.close_date = Date.today
+      else
+        @ticket.close_date = nil
+      end
+
+      if params[:ticket][:status] == "open"
+        #tekrar talebi aktif hale getiriyorsa
+        unless @ticket.assigned_id.nil?
+          params[:ticket][:status] = "assigned"
+        end
+      end
+
       respond_to do |format|
         if @ticket.update_attributes(params[:ticket])
           flash[:notice] = "Ticket was successfully updated."
