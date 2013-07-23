@@ -64,23 +64,14 @@ module Helpdesk
     def update
       @ticket = Ticket.find(params[:id])
   
-      #ilk defa atama yapılıyor ise;
-      if @ticket.assigned_id.nil? && params[:ticket][:assigned_id].present?
-        @ticket.status = "assigned"
-      end
-      
-      #talep kapatılıyor ise
-      if params[:ticket][:status] == "closed"
-        @ticket.close_date = Date.today
-      else
-        @ticket.close_date = nil
+      #ticket status is changing
+      if params[:ticket][:status].present && (@ticket.status != params[:ticket][:status])
+        change_status
       end
 
-      if params[:ticket][:status] == "open"
-        #tekrar talebi aktif hale getiriyorsa
-        unless @ticket.assigned_id.nil?
-          params[:ticket][:status] = "assigned"
-        end
+      #first time ticket is assigning to someone
+      if @ticket.assigned_id.nil? && params[:ticket][:assigned_id].present?
+        assign_ticket
       end
 
       respond_to do |format|
@@ -105,5 +96,36 @@ module Helpdesk
         format.json { head :no_content }
       end
     end
+
+    private
+    def change_status
+      #ticket has been closing
+      if params[:ticket][:status] == "closed"
+        close_ticket
+      end
+
+      #ticket has been re opening
+      if params[:ticket][:status] == "open"
+        if @ticket.status == "closed"
+          reopen_ticket
+        end
+      end
+    end
+
+    def close_ticket
+      @ticket.close_date = Date.today
+    end
+
+    def reopen_ticket
+      unless @ticket.assigned_id.nil?
+        params[:ticket][:status] = "assigned"
+      end
+      @ticket.close_date = nil
+    end
+
+    def assign_ticket
+      @ticket.status = "assigned"
+    end
+
   end
 end
