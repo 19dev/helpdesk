@@ -3,6 +3,7 @@
 </div>
 
 <div class="row-fluid">
+
   <div class="row-fluid profile-section">
     <div class="page-header">
       <h5>
@@ -22,6 +23,13 @@
       <ul id="Helpdesk::Ticket_<%= ticket.id %>_posts">
         <%= render partial: "posts/post_listitem", collection: ticket.posts.latests, as: :post %>
       </ul>
+    </div>
+  </div>
+
+  <div class="row-fluid profile-section">
+    <%= page_sub_header("Tarihçe") %>
+    <div class="row-fluid">
+      <%= ticket_actions_list_table(ticket.ticket_actions) %>
     </div>
   </div>
 </div>

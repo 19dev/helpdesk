@@ -39,3 +39,11 @@ tr:
       open: "Aktif-Bekliyor"
       assigned: "Atanmış-Çalışılıyor"
       closed: "Kapatılmış"
+    action_codes:
+      created: "talep kaydını oluşturdu"
+      assigned: "talep kaydını %{user} atadı"
+      self_assigned: "talep kaydını çözmek üzere üzerine aldı"
+      closed: "talebi kapattı"
+      reopened: "talebi tekrar açtı"
+      cancelled: "talebi iptal etti"
+      updated: "talebi güncelledi"

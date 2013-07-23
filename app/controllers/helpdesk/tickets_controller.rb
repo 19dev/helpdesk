@@ -52,6 +52,7 @@ module Helpdesk
  
       respond_to do |format|
         if @ticket.save
+          create_action("created")
           format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
           format.json { render json: @ticket, status: :created, location: @ticket }
         else
@@ -65,7 +66,7 @@ module Helpdesk
       @ticket = Ticket.find(params[:id])
   
       #ticket status is changing
-      if params[:ticket][:status].present && (@ticket.status != params[:ticket][:status])
+      if params[:ticket][:status].present? && (@ticket.status != params[:ticket][:status])
         change_status
       end
 
@@ -114,6 +115,7 @@ module Helpdesk
 
     def close_ticket
       @ticket.close_date = Date.today
+      create_action("closed")
     end
 
     def reopen_ticket
@@ -121,10 +123,18 @@ module Helpdesk
         params[:ticket][:status] = "assigned"
       end
       @ticket.close_date = nil
+      create_action("reopened")
     end
 
     def assign_ticket
       @ticket.status = "assigned"
+      create_action("assigned")
+    end
+
+    def create_action(actionCode, assignedUser=nil)
+      @action      = @ticket.ticket_actions.new(action_code: actionCode, assigned: assignedUser)
+      @action.user = current_user
+      @action.save!
     end
 
   end

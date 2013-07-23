@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130622144710) do
+ActiveRecord::Schema.define(:version => 20130723144836) do
+
+  create_table "helpdesk_ticket_actions", :force => true do |t|
+    t.integer  "ticket_id",                  :null => false
+    t.integer  "user_id",                    :null => false
+    t.string   "action_code", :limit => 30,  :null => false
+    t.string   "assigned",    :limit => 100
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "helpdesk_ticket_actions", ["ticket_id"], :name => "index_helpdesk_ticket_actions_on_ticket_id"
 
   create_table "helpdesk_tickets", :force => true do |t|
     t.string   "title",                     :null => false

@@ -8,6 +8,7 @@ module Helpdesk
     belongs_to :user, class_name: Assetim.user_class
     belongs_to :assigned, class_name: Assetim.user_class
 
+    has_many   :ticket_actions 
     has_many :posts, as: :target, dependent: :destroy
 
     attr_accessible :assigned_id, :close_date, :desc, :status, :title

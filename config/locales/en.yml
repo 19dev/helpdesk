@@ -39,3 +39,11 @@ en:
       open: "Open-Waiting"
       assigned: "Assigned-On Progress"
       closed: "Closed"
+    action_codes:
+      created: "created this ticket"
+      assigned: "assigned ticket to %{user}"
+      self_assigned: "took to solve the ticket"
+      closed: "closed ticket"
+      reopened: "re-opened ticket"
+      cancelled: "cancelled ticket"
+      updated: "updated ticket"
