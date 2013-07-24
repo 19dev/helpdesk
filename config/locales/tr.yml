@@ -21,6 +21,9 @@ tr:
       assigned: "Çözüm Sorumlusu"
       close_date: "Kapama Tarihi"
       created_at: "Talep Tarihi"
+      action_date: "İşlem Tarihi"
+      action_user: "İşlem Kullanıcısı"
+      action_desc: "İşlem Açıklaması"
       user: "Talep Sahibi"
       not_assigned_yet: "Kimseye Atanmamış"
       assign_to_someone: "Çözüm Sorumlusu Belirleyin"
@@ -41,7 +44,7 @@ tr:
       closed: "Kapatılmış"
     action_codes:
       created: "talep kaydını oluşturdu"
-      assigned: "talep kaydını %{user} atadı"
+      assigned: "talep kaydı için çözüm sorumlusunu belirledi, şanslı kişi: %{user}"
       self_assigned: "talep kaydını çözmek üzere üzerine aldı"
       closed: "talebi kapattı"
       reopened: "talebi tekrar açtı"

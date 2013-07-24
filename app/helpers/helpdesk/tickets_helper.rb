@@ -47,13 +47,13 @@ module Helpdesk
 		def ticket_actions_list_table(actions=@actions, options={})
 			content = content_tag :div, class: "row-fluid", id: "tickets_list_div" do
 				table_for actions, html: {class: "table table-bordered table-condensed", id: "tickets_list_table"} do
-				  column title: t("actions.label.user"), html: { th: { class: "span1" } } do |action|
+				  column title: t("tickets.label.action_user"), html: { th: { class: "span1" } } do |action|
 				  	user_mini_avatar(action.user)
 				  end
-				  column title: t("actions.label.status"), html: { th: { class: "span5" } } do |action|
+				  column title: t("tickets.label.action_desc"), html: { th: { class: "span5" } } do |action|
 				  	"#{user_name(action.user)} #{ticket_action_desc(action)}"
 				  end
-				  column title: t("actions.label.created_at"), html: { th: { class: "span2" } } do |action|
+				  column title: t("tickets.label.action_date"), html: { th: { class: "span2" } } do |action|
 				  	created_time(action.created_at.to_time)
 				  end
 				end

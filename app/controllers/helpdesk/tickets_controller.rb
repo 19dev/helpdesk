@@ -35,6 +35,7 @@ module Helpdesk
   
     def edit
       @ticket = Ticket.find(params[:id])
+
       respond_to do |format|
         if params[:nolayout]
           format.html { render partial: 'modal_form', locals: { ticket: @ticket } }
@@ -71,7 +72,7 @@ module Helpdesk
       end
 
       #first time ticket is assigning to someone
-      if @ticket.assigned_id.nil? && params[:ticket][:assigned_id].present?
+      if params[:ticket][:assigned_id].present? && (@ticket.assigned_id != params[:ticket][:assigned_id])
         assign_ticket
       end
 
@@ -128,7 +129,12 @@ module Helpdesk
 
     def assign_ticket
       @ticket.status = "assigned"
-      create_action("assigned")
+      if params[:ticket][:assigned_id] != current_user.id
+        @assigned_user = User.find(params[:ticket][:assigned_id])
+        create_action("assigned", @assigned_user.to_s)
+      else
+        create_action("self_assigned")
+      end
     end
 
     def create_action(actionCode, assignedUser=nil)
