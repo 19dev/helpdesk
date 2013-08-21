@@ -3,7 +3,7 @@ module Helpdesk
 
     include Tire::Model::Search
     include Tire::Model::Callbacks
-    index_name { "helpdesk-tickets-#{Patron.current_id}" }
+    index_name { "helpdesk-tickets-#{Nimbos::Patron.current_id}" }
 
     belongs_to :user, class_name: Assetim.user_class
     belongs_to :assigned, class_name: Assetim.user_class
@@ -17,7 +17,7 @@ module Helpdesk
     validates :user_id, presence: true
     validates :status, presence: true
 
-    default_scope { where(patron_id: Patron.current_id) }
+    default_scope { where(patron_id: Nimbos::Patron.current_id) }
     scope :latest, order("created_at desc")
 
     def self.ticket_status

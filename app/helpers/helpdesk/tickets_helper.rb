@@ -21,7 +21,7 @@ module Helpdesk
 				  	#image_tag user_mini_avatar(ticket.assigned), class: "img-circle", title: user_name(ticket.assigned) if ticket.assigned
 				  	user_mini_avatar(ticket.assigned) if ticket.assigned
 				  end
-          		  column :close_date, title: t("tickets.label.close_date"), html: { th: { class: "span1" } }
+          column :close_date, title: t("tickets.label.close_date"), html: { th: { class: "span1" } }
 				  column title: "", html: { th: { class: "span1" } } do |ticket|
 				  	#render partial: "helpdesk/tickets/actions", locals: { ticket: ticket }
 				  	#link_to t("defaults.link.edit"), helpdesk.edit_ticket_path(ticket) unless options[:hide_edit_link]

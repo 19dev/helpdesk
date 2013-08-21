@@ -130,7 +130,7 @@ module Helpdesk
     def assign_ticket
       @ticket.status = "assigned"
       if params[:ticket][:assigned_id] != current_user.id
-        @assigned_user = User.find(params[:ticket][:assigned_id])
+        @assigned_user = Nimbos::User.find(params[:ticket][:assigned_id])
         create_action("assigned", @assigned_user.to_s)
       else
         create_action("self_assigned")

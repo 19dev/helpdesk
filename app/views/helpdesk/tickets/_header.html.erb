@@ -25,7 +25,7 @@
     <div class="row-fluid">
       <p>
         <i class="icon-user"></i>
-        <%= link_to user_name(ticket.user), main_app.user_path(ticket.user) %>
+        <%= link_to user_name(ticket.user), nimbos.user_path(ticket.user) %>
         |
         <i class="icon-calendar"></i>
         <%= created_time(ticket.created_at) %>
@@ -35,7 +35,7 @@
         |
         <% unless ticket.assigned_id.nil? %>
           <i class="icon-user"></i>
-          <%= t("tickets.label.assigned") %>:<%= link_to user_name(ticket.assigned), main_app.user_path(ticket.assigned) %>
+          <%= t("tickets.label.assigned") %>:<%= link_to user_name(ticket.assigned), nimbos.user_path(ticket.assigned) %>
           <% if ticket.status == "open" %>
           [<i class="icon-random"></i>
           <%= link_to t("defaults.action.change"), edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>]
