@@ -4,7 +4,7 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    <% if ticket.status == "open" %>
+    <% if ticket.status != "closed" %>
     <li>
     	<% if ticket.assigned_id.nil? %>
     	  <%= link_to edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" do %>
