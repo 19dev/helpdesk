@@ -15,6 +15,7 @@ tr:
       new_page_header: "Yeni Talep"
       small_form_help: ""
     label:
+      reference: "Talep No"
       title: "Talep Başlığı"
       desc: "Talep Detayları"
       status: "Talep Durumu"

@@ -15,6 +15,7 @@ en:
       new_page_header: "New Request"
       small_form_help: ""
     label:
+      reference: "Request No"
       title: "Request Title"
       desc: "Request Details"
       status: "Request Status"

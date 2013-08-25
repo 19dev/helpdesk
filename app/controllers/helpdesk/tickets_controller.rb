@@ -7,7 +7,7 @@ module Helpdesk
     before_filter(:only => [:index]) { |c| c.set_tab "ticketnavigator" }
 
     def index
-      @tickets = Ticket.latest.page(params[:page]).per(10)
+      @tickets = Helpdesk::Ticket.latest.page(params[:page]).per(10)
   
       respond_to do |format|
         format.html # index.html.erb
@@ -16,7 +16,7 @@ module Helpdesk
     end
   
     def show
-      @ticket = Ticket.find(params[:id])
+      @ticket = Helpdesk::Ticket.find(params[:id])
   
       respond_to do |format|
         format.html # show.html.erb
@@ -25,7 +25,7 @@ module Helpdesk
     end
   
     def new
-      @ticket = Ticket.new
+      @ticket = Helpdesk::Ticket.new
   
       respond_to do |format|
         format.html # new.html.erb
@@ -34,7 +34,7 @@ module Helpdesk
     end
   
     def edit
-      @ticket = Ticket.find(params[:id])
+      @ticket = Helpdesk::Ticket.find(params[:id])
 
       respond_to do |format|
         if params[:nolayout]
@@ -47,7 +47,7 @@ module Helpdesk
     end
   
     def create
-      @ticket = Ticket.new(params[:ticket])
+      @ticket = Helpdesk::Ticket.new(params[:ticket])
       @ticket.user_id = current_user.id
       @ticket.status = "open"
  
@@ -64,7 +64,7 @@ module Helpdesk
     end
   
     def update
-      @ticket = Ticket.find(params[:id])
+      @ticket = Helpdesk::Ticket.find(params[:id])
       @updatable = true
       check_for_update
       if @updatable
@@ -99,7 +99,7 @@ module Helpdesk
     end
   
     def destroy
-      @ticket = Ticket.find(params[:id])
+      @ticket = Helpdesk::Ticket.find(params[:id])
       @ticket.destroy
   
       respond_to do |format|
