@@ -65,26 +65,35 @@ module Helpdesk
   
     def update
       @ticket = Ticket.find(params[:id])
-  
-      #ticket status is changing
-      if params[:ticket][:status].present? && (@ticket.status != params[:ticket][:status])
-        change_status
-      end
+      @updatable = true
+      check_for_update
+      if @updatable
+        #ticket status is changing
+        if params[:ticket][:status].present? && (@ticket.status != params[:ticket][:status])
+          change_status
+        end
 
-      #first time ticket is assigning to someone
-      if params[:ticket][:assigned_id].present? && (@ticket.assigned_id != params[:ticket][:assigned_id])
-        assign_ticket
-      end
+        #first time ticket is assigning to someone
+        if params[:ticket][:assigned_id].present? && (@ticket.assigned_id != params[:ticket][:assigned_id])
+          assign_ticket
+        end
 
-      respond_to do |format|
-        if @ticket.update_attributes(params[:ticket])
-          flash[:notice] = "Ticket was successfully updated."
-          format.html { redirect_to @ticket }
-          format.json { head :no_content }
-          format.js   { }
-        else
+        respond_to do |format|
+          if @ticket.update_attributes(params[:ticket])
+            flash[:notice] = "Ticket was successfully updated."
+            format.html { redirect_to @ticket }
+            format.json { head :no_content }
+            format.js   { }
+          else
+            format.html { render action: "edit" }
+            format.json { render json: @ticket.errors, status: :unprocessable_entity }
+          end
+        end
+      else
+        respond_to do |format|
           format.html { render action: "edit" }
-          format.json { render json: @ticket.errors, status: :unprocessable_entity }
+          #TODO burada ticket.errors'e flash[:error] eklenmeli
+          #format.json { render json: @ticket.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -100,6 +109,13 @@ module Helpdesk
     end
 
     private
+    def check_for_update
+      if (params[:ticket][:status] != "open" && @ticket.status == "closed")
+        @updatable = false
+        flash[:error] = "Ticket is closed, can't update."
+      end
+    end
+
     def change_status
       #ticket has been closing
       if params[:ticket][:status] == "closed"

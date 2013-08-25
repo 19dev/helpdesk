@@ -9,7 +9,7 @@ module Helpdesk
 				  end
 				  column title: t("tickets.label.user"), html: { th: { class: "span1" } } do |ticket|
 				  	#image_tag user_mini_avatar(ticket.user), class: "img-circle", title: user_name(ticket.user) if ticket.user
-				  	person_avatar_name(ticket.user)  if ticket.user
+				  	person_small_avatar(ticket.user) if ticket.user
 				  end
 				  column title: t("tickets.label.created_at"), html: { th: { class: "span2" } } do |ticket|
 				  	created_time(ticket.created_at.to_time)

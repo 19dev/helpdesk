@@ -15,13 +15,13 @@
     </div>
     <div id="new_post_div" class="row-fluid slidingDiv">
       <div class="span6">
-        <%= render 'posts/form', object: ticket %>
+        <%= render 'nimbos/posts/form', object: ticket %>
       </div>
     </div>
     <%#= render 'posts/postlist', posts: ticket.posts %>
     <div class="row-fluid">
       <ul id="Helpdesk::Ticket_<%= ticket.id %>_posts">
-        <%= render partial: "posts/post_listitem", collection: ticket.posts.latests, as: :post %>
+        <%= render partial: "nimbos/posts/post_listitem", collection: ticket.posts.latests, as: :post %>
       </ul>
     </div>
   </div>
