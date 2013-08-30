@@ -67,6 +67,18 @@ module Helpdesk
       to_json(include: { user: { only: [:name, :surname, :avatar] }, assigned: { only: [:name, :surname, :avatar] } })
     end
 
+    def self.paginate(options = {})
+      options = {:page => 1, :per_page => 10}.update options
+      page(options[:page]).per(options[:per_page])
+    end
+
+    #def self.search(str)
+    #  options = {:page => 1, :per_page=> 10}
+    #  tire.search(str, options) do
+    #    query {string str, default_operator: "AND"} if str.present?
+    #  end
+    #end
+
 private
     def set_initials
       self.reference = Nimbos::Patron.generate_counter("Ticket", nil, nil)
