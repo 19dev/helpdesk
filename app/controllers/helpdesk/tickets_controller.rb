@@ -54,7 +54,7 @@ module Helpdesk
       respond_to do |format|
         if @ticket.save
           create_action("created")
-          format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
+          format.html { redirect_to @ticket, notice: t('tickets.message.ticket_created') }
           format.json { render json: @ticket, status: :created, location: @ticket }
         else
           format.html { render action: "new" }
@@ -80,7 +80,7 @@ module Helpdesk
 
         respond_to do |format|
           if @ticket.update_attributes(params[:ticket])
-            flash[:notice] = "Ticket was successfully updated."
+            flash[:notice] = t('tickets.message.ticket_updated')
             format.html { redirect_to @ticket }
             format.json { head :no_content }
             format.js   { }

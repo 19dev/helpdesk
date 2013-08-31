@@ -39,6 +39,7 @@ tr:
       close: "Talebi Kapat"
       reopen: "Talebi Tekrar Aç"
       delete: "Talebi Sil"
+      new_message: "Yeni Mesaj Gönder"
     status:
       open: "Aktif-Bekliyor"
       assigned: "Atanmış-Çalışılıyor"
@@ -51,3 +52,11 @@ tr:
       reopened: "talebi tekrar açtı"
       cancelled: "talebi iptal etti"
       updated: "talebi güncelledi"
+    message:
+      intro: "Talep bilgilerinizi takip edebilirsiniz."
+      destroy_confirm: "Silmek istediğinize emin misiniz?"
+      new_ticket_intro: "Yeni bir talep girebilir veya varolanı güncelleyebilirsiniz."
+      ticket_created: "Talep başarılı bir şekilde oluşturuldu."
+      ticket_updated: "Talep başarılı bir şekilde güncellendi."
+      ticket_action_created: "Talep hareketi başarılı bir şekilde oluşturuldu."
+      ticket_action_updated: "Talep hareketi başarılı bir şekilde güncellendi."

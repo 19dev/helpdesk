@@ -38,7 +38,8 @@ en:
       assign: "Assign this Request"
       close: "Close Request"
       reopen: "Re-Open Request"
-      delete: "Delete Request"      
+      delete: "Delete Request"  
+      new_message: "Post a new message"    
     status:
       open: "Open-Waiting"
       assigned: "Assigned-On Progress"
@@ -51,3 +52,11 @@ en:
       reopened: "re-opened ticket"
       cancelled: "cancelled ticket"
       updated: "updated ticket"
+    message:
+      intro: "You can follow your ticket information."
+      destroy_confirm: "Are You Sure Destroy?"
+      new_ticket_intro: "You can create new ticket or edit an old one."
+      ticket_created: "Ticket was successfully created."
+      ticket_updated: "Ticket was successfully updated."
+      ticket_action_created: "Ticket action was successfully created."
+      ticket_action_updated: "Ticket action was successfully updated."

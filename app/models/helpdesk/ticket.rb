@@ -8,7 +8,7 @@ module Helpdesk
     belongs_to :user, class_name: "Nimbos::User"
     belongs_to :assigned, class_name: "Nimbos::User"
 
-    has_many   :ticket_actions 
+    has_many   :ticket_actions, dependent: :destroy
     has_many   :posts, class_name: "Nimbos::Post", as: :target, dependent: :destroy
 
     attr_accessible :assigned_id, :close_date, :desc, :status, :title

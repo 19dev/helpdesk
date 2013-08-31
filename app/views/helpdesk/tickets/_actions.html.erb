@@ -17,7 +17,7 @@
     	<% end %>
     </li>
     <li>
-      <%= link_to "#" do %>
+      <%= link_to ticket, :data => {:confirm => t("tickets.message.destroy_confirm")}, :method => :delete do %>
         <i class="icon-remove"></i><%= t("tickets.action.delete") %>
       <% end %>
     </li>
