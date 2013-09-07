@@ -10,5 +10,9 @@ module Helpdesk
     		helper Helpdesk::TicketsHelper
     	end
     end
+
+    config.generators do |g|
+        g.test_framework :mini_test, spec: true, fixture: false
+    end
   end
 end
