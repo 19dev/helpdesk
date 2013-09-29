@@ -3,7 +3,6 @@ module Helpdesk
 
     include Tire::Model::Search
     include Tire::Model::Callbacks
-    index_name { "helpdesk-tickets-#{Nimbos::Patron.current_id}" }
 
     belongs_to :user, class_name: "Nimbos::User"
     belongs_to :assigned, class_name: "Nimbos::User"
@@ -23,20 +22,11 @@ module Helpdesk
 
     before_create :set_initials
 
-    def self.ticket_status
-    	%w[open assigned closed]
-    end
-
-    def to_s
-      reference
-    end
-
-    def to_param
-      "#{id}-#{title.parameterize}"
-    end
-
+    after_touch() { tire.update_index }
+    index_name { "socialfreight-tickets" }#{Nimbos::Patron.current_id}
     mapping do
       indexes :id, type: :integer, index: :not_analyzed
+      indexes :patron_id, type: :integer, index: :not_analyzed
       indexes :title, analyzer: 'snowball', boost: 100
       indexes :desc, analyzer: 'snowball'
       indexes :status, index: :not_analyzed
@@ -48,36 +38,39 @@ module Helpdesk
       indexes :assigned do
         indexes :name, analyzer: 'snowball'
         indexes :surname, analyzer: 'snowball'
-        indexes :avatar, index: :not_analyzed
       end
       indexes :close_date, type: 'date', index: :not_analyzed
       indexes :created_at, type: 'date', index: :not_analyzed
     end
 
     def to_indexed_json
-      #{
-      #  id: id,
-      #  title: title,
-      #  desc: desc,
-      #  status: status,
-      #  assigned_id: assigned_id,
-      #  close_date: close_date,
-      #  created_at: created_at,
-      #}.to_json(include: { user: { only: [:name, :surname, :avatar_url] } })
-      to_json(include: { user: { only: [:name, :surname, :avatar] }, assigned: { only: [:name, :surname, :avatar] } })
+      to_json(include: { user: { only: [:name, :surname] }, assigned: { only: [:name, :surname] } })
+    end
+
+    def self.search(query, page_no=1, per_page=10)
+      tire.search(load: false, page: page_no, per_page: per_page) do
+        query { string query } if query.present? #, default_operator: "AND"
+        filter :term, patron_id: Nimbos::Patron.current_id
+        sort  { by :created_at, "desc" } if query.blank?
+        #filter :range, published_at: {lte: Time.zone.now}
+      end
     end
 
     def self.paginate(options = {})
-      options = {:page => 1, :per_page => 10}.update options
       page(options[:page]).per(options[:per_page])
     end
 
-    #def self.search(str)
-    #  options = {:page => 1, :per_page=> 10}
-    #  tire.search(str, options) do
-    #    query {string str, default_operator: "AND"} if str.present?
-    #  end
-    #end
+    def self.ticket_status
+    	%w[open assigned closed]
+    end
+
+    def to_s
+      reference
+    end
+
+    def to_param
+      "#{id}-#{title.parameterize}"
+    end
 
 private
     def set_initials
