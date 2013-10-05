@@ -1,3 +1,3 @@
-$('#ticket_<%= @ticket.id %>_profile').html("<%= j render partial: 'header', locals: { ticket: @ticket } %>");
+$('#ticket_<%= @ticket.id %>_profile_header').html("<%= j render partial: 'header', locals: { ticket: @ticket } %>");
 $('#newAgileRecord').modal('hide')
 $("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= escape_javascript(flash[:notice]) %></div>');

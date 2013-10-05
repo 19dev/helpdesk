@@ -46,7 +46,7 @@ tr:
       closed: "Kapatılmış"
     action_codes:
       created: "talep kaydını oluşturdu"
-      assigned: "talep kaydı için çözüm sorumlusunu belirledi, şanslı kişi: %{user}"
+      assigned: "talep kaydı için çözüm sorumlusunu %{user} olarak belirledi"
       self_assigned: "talep kaydını çözmek üzere üzerine aldı"
       closed: "talebi kapattı"
       reopened: "talebi tekrar açtı"
