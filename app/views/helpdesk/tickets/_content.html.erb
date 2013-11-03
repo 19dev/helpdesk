@@ -1,19 +1,35 @@
-<div class="profile-content">
+<div class="row">
 
-  <div class="row-fluid profile-section">
-    <%= section_header_with_link("Discussions", nimbos.new_discussion_url(ticket_id: ticket.id), "Start new discussion") %>
-    <div class="row-fluid">
-      <ul id="Helpdesk::Ticket_<%= ticket.id %>_discussions">
-        <%= render partial: "nimbos/discussions/discussion", collection: ticket.discussions.latests, as: :discussion %>
-      </ul>
-    </div>
+  <div class="col-md-1">
   </div>
 
-  <div class="row-fluid profile-section">
-    <%= page_sub_header("Tarihçe") %>
-    <div class="row-fluid">
-      <%= ticket_actions_list_table(ticket.ticket_actions) %>
+  <div class="col-md-11">
+
+    <div class="portlet box grey">
+      <% content_for(:portlet_actions, flush: true) do %>
+        <%= link_to nimbos.new_discussion_url(ticket_id: ticket.id), class: "btn green btn-sm" do %>
+          <i class="icon-comments"></i> Start new discussion
+        <% end %>
+      <% end %>
+      <%= render "shared/portlet_title", title: "Konuşmalar" %>
+
+      <div id="Helpdesk::Ticket_<%= ticket.id %>_discussions_list" class="portlet-body">
+        <ul id="Helpdesk::Ticket_<%= ticket.id %>_discussions">
+          <%= render partial: "nimbos/discussions/discussion", collection: ticket.discussions.latests, as: :discussion %>
+        </ul>
+      </div>
     </div>
+
+    <div class="portlet box grey">
+      <% content_for(:portlet_actions, flush: true) do %>
+        <%= nil %>
+      <% end %>    
+      <%= render "shared/portlet_title", title: "Talep Geçmişi" %>
+      <div id="Helpdesk::Ticket_<%= ticket.id %>_actions_list" class="portlet-body">
+        <%= ticket_actions_list_table(ticket.ticket_actions) %>
+      </div>
+    </div>
+
   </div>
 
 </div>

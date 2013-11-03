@@ -1,15 +1,26 @@
-<div id="tickets_index_page" class="row-fluid">
+<div id="tickets_index" class="row">
 
-  <%= page_header_helper(t("tickets.defaults.page_header"), new_ticket_path, t("tickets.defaults.new_record_label")) %>
-  <%= page_intro_helper(t("tickets.defaults.intro_message")) %>
+  <%= render "shared/page_title", page_title: "Talepler", page_small_title: "Ekip arkadaşlarınızdan gelen sistem talepleri", model_name: "tickets", model_path: "helpdesk/tickets" %>
 
-  <%= sub_header_with_search_form(t("tickets.defaults.last_records_title"), "tickets") %>
+  <div class="row inbox">
+    <div class="col-md-2">
+      <ul class="inbox-nav margin-bottom-10">
+        <li class="compose-btn">
+          <%= link_to helpdesk.new_ticket_path, class: "btn green" do %>
+            <i class="icon-edit"></i> Yeni Talep
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-10">
+      <div class="inbox-header">
+        <h1 class="pull-left">Talepler <small>En son eklenen talepler</small></h1>
+        <%= render "shared/quick_search_form", model_name: "tickets" %>
+      </div>
 
-  <div id="tickets_list" class="row-fluid">
-    <%= render partial: "helpdesk/tickets/list", locals: { objects: @tickets, is_paginated: true } %>
+      <div class="inbox-content" id="tickets_list">
+        <%= render "helpdesk/tickets/list", objects: @tickets %>
+      </div>
+    </div>
   </div>
-
 </div>
-<script type="text/javascript">
-  document.getElementById('ticketnavigator').classList.add('active');
-</script>

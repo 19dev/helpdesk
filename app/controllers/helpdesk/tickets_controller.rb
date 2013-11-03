@@ -47,7 +47,7 @@ module Helpdesk
     end
   
     def create
-      @ticket = Helpdesk::Ticket.new(params[:ticket])
+      @ticket = Helpdesk::Ticket.new(ticket_params)
       @ticket.user_id = current_user.id
       @ticket.status = "open"
  
@@ -79,7 +79,7 @@ module Helpdesk
         end
 
         respond_to do |format|
-          if @ticket.update_attributes(params[:ticket])
+          if @ticket.update_attributes(ticket_params)
             flash[:notice] = t('tickets.message.ticket_updated')
             format.html { redirect_to @ticket }
             format.json { head :no_content }
@@ -157,6 +157,10 @@ module Helpdesk
       @action      = @ticket.ticket_actions.new(action_code: actionCode, assigned: assignedUser)
       @action.user = current_user
       @action.save!
+    end
+
+    def ticket_params
+      params.require(:ticket).permit(:assigned_id, :close_date, :desc, :status, :title)
     end
 
   end

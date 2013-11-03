@@ -1,16 +1,15 @@
-<div class="btn-group">
-  <button class="btn"><%= t("defaults.link.action") %></button>
-  <button class="btn dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
+<li class="btn-group">
+  <button type="button" class="btn blue dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
+    <span><%= t("defaults.link.action") %></span> <i class="icon-angle-down"></i>
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu pull-right" role="menu">
     <% if ticket.status != "closed" %>
       <li>
         <%= link_to edit_ticket_path(ticket) do %>
           <i class="icon-edit"></i><%= t("tickets.defaults.edit_record_label") %>
         <% end %>
       </li>
-      <hr>
+      <li class="divider"></li>
       <li>
       	<% if ticket.assigned_id.nil? %>
       	  <%= link_to edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" do %>
@@ -27,7 +26,7 @@
           <i class="icon-folder-close"></i><%= t("tickets.action.close") %>
         <% end %>
       </li>
-      <hr>
+      <li class="divider"></li>
       <li>
         <%= link_to ticket, :data => {:confirm => t("tickets.message.destroy_confirm")}, :method => :delete do %>
           <i class="icon-remove"></i><%= t("tickets.action.delete") %>
@@ -41,4 +40,4 @@
       </li>
     <% end %>
   </ul>
-</div>
+</li>

@@ -10,8 +10,6 @@ module Helpdesk
     has_many   :ticket_actions, dependent: :destroy
     has_many   :discussions, class_name: "Nimbos::Discussion", as: :target, dependent: :destroy
 
-    attr_accessible :assigned_id, :close_date, :desc, :status, :title
-
     #validates :reference, presence: { on: :update }, uniqueness: { case_sensitive: false, scope: :patron_id }
     validates :title, presence: true, length: { maximum: 255 }
     validates :user_id, presence: true

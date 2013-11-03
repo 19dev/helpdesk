@@ -1,7 +1,9 @@
-<div class="row-fluid">
+<div class="row">
 
-  <%= page_header_helper(t("tickets.defaults.new_page_header")) %>
+  <%= render "shared/page_title", page_title: "Talepler", page_small_title: "Ekip arkadaşlarınızdan gelen sistem talepleri", model_name: "tickets", model_path: "helpdesk/tickets" %>
 
-  <%= render 'form' %>
+  <div class="col-md-12">
+  	<%= render 'form' %>
+  </div>
 
 </div>

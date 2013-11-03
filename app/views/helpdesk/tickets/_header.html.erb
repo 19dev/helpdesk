@@ -1,52 +1,51 @@
-<div class="row-fluid">
+<div id="Ticket_#{ticket.id}_profile_header" class="row">
 
-  <div class="span1">
-    <%= image_tag "/assets/def_company_pic.png", class: "thumbnail" %>
-  </div>
-
-  <div class="span8">
+  <div class="col-md-1">
     <p>
-      <strong><%= "#{ticket.reference} - #{ticket.title}" %></strong>
-      <br>
-      <small style="white-space:pre-wrap"><%= ticket.desc %></small>
+    <i class="icon-bug pull-left icon-border icon-4x"></i>
     </p>
-    <p>
-      <i class="icon-user"></i>
-      <%= t("tickets.label.user") %>:
-      <%= link_to user_name(ticket.user), nimbos.user_path(ticket.user) %>
-      |
-      <i class="icon-calendar"></i>
-      <%= created_time(ticket.created_at) %>
-
-      <span class="pull-right">
-      <i class="icon-flag"></i>
-      <%= t("tickets.status.#{ticket.status}") %>
-      </span>
-      <br>
-      <% unless ticket.assigned_id.nil? %>
-        <i class="icon-user"></i>
-        <%= t("tickets.label.assigned") %>:<%= link_to user_name(ticket.assigned), nimbos.user_path(ticket.assigned) %>
-        <% if ticket.status == "open" %>
-          [<i class="icon-random"></i>
-        <%= link_to t("defaults.action.change"), edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>]
-          <% end %>
+  </div>
+  <div class="col-md-10">
+    <div class="row">
+      <div class="col-md-10 profile-info">
+        <h1><%= ticket.reference %></h1>
+        <p>
+          <strong><%= ticket.title %></strong>
+          <br>
+          <span style="white-space:pre-wrap"><%= ticket.desc %></span>
+        </p>
+        <p>
+          <i class="icon-user"></i>
+          <%= t("tickets.label.user") %>:
+          <%= link_to user_name(ticket.user), nimbos.user_path(ticket.user) %>
           |
-        <i class="icon-calendar"></i>
-        <%= created_time(ticket.close_date) if ticket.close_date %>
-      <% else %>
-        <i class="icon-random"></i>
-        <%= t("tickets.label.not_assigned_yet") %>,
-        <%= link_to t("tickets.label.assign_to_someone"), edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
-      <% end %>
-    </p>
-  </div>
-  <div class="span3 btn-toolbar">
-    <%= render partial: "actions", locals: { ticket: ticket } %>
-    <% if ticket.status != "closed" %>
-      <div class="btn-group">
-        <%= link_to t("tickets.defaults.edit_record_label"), edit_ticket_path(ticket), class: "btn" %>
+          <i class="icon-calendar"></i>
+          <%= created_time(ticket.created_at) %>
+
+          <span class="pull-right">
+          <i class="icon-flag"></i>
+          <%= t("tickets.status.#{ticket.status}") %>
+          </span>
+          <br>
+          <% unless ticket.assigned_id.nil? %>
+            <i class="icon-user"></i>
+            <%= t("tickets.label.assigned") %>:<%= link_to user_name(ticket.assigned), nimbos.user_path(ticket.assigned) %>
+            <% if ticket.status == "open" %>
+              [<i class="icon-random"></i>
+            <%= link_to t("defaults.action.change"), edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>]
+              <% end %>
+              |
+            <i class="icon-calendar"></i>
+            <%= created_time(ticket.close_date) if ticket.close_date %>
+          <% else %>
+            <i class="icon-random"></i>
+            <%= t("tickets.label.not_assigned_yet") %>,
+            <%= link_to t("tickets.label.assign_to_someone"), edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
+          <% end %>
+        </p>
       </div>
-    <% end %>
+    </div>
+    <hr>
   </div>
 
 </div>

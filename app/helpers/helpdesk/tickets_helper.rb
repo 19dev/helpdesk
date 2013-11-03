@@ -30,7 +30,7 @@ module Helpdesk
 
 			content <<	(content_tag :div, class: "pagination" do
 				paginate tickets
-			end if options[:show_pagination])
+			end)
 
 			content.html_safe
 		end

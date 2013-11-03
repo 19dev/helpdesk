@@ -1,10 +1,10 @@
-<div class="row-fluid" id="ticket_<%= ticket.id %>_profile">
+<div class="row" id="ticket_<%= ticket.id %>_profile">
 
-  <div class="row-fluid" id="ticket_<%= ticket.id %>_profile_header">
+  <div class="col-md-12" id="ticket_<%= ticket.id %>_profile_header">
     <%= render partial: "header", locals: { ticket: ticket } %>
   </div>
 
-  <div class="row-fluid profile-section" id="ticket_<%= ticket.id %>_profile_content">
+  <div class="col-md-12 profile-section" id="ticket_<%= ticket.id %>_profile_content">
     <%= render partial: "content", locals: { ticket: ticket } %>
   </div>
 </div>
