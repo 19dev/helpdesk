@@ -7,7 +7,7 @@ module Helpdesk
     before_filter(:only => [:index]) { |c| c.set_tab "ticketnavigator" }
 
     def index
-      @tickets = Helpdesk::Ticket.latest.page(params[:page]).per(10)
+      @tickets = Helpdesk::Ticket.order("created_at desc").page(params[:page]).per(10)
   
       respond_to do |format|
         format.html # index.html.erb
