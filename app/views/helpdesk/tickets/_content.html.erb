@@ -8,7 +8,7 @@
     <div class="portlet box grey">
       <% content_for(:portlet_actions, flush: true) do %>
         <%= link_to nimbos.new_discussion_url(ticket_id: ticket.id), class: "btn green btn-sm" do %>
-          <i class="icon-comments"></i> Start new discussion
+          <i class="fa fa-comments"></i> Start new discussion
         <% end %>
       <% end %>
       <%= render "shared/portlet_title", title: "Konuşmalar" %>
