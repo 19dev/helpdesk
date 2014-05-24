@@ -30,19 +30,17 @@ module Helpdesk
       indexes :status, index: :not_analyzed
       indexes :user do
         indexes :name, analyzer: 'snowball'
-        indexes :surname, analyzer: 'snowball'
         indexes :avatar, index: :not_analyzed
       end
       indexes :assigned do
         indexes :name, analyzer: 'snowball'
-        indexes :surname, analyzer: 'snowball'
       end
       indexes :close_date, type: 'date', index: :not_analyzed
       indexes :created_at, type: 'date', index: :not_analyzed
     end
 
     def to_indexed_json
-      to_json(include: { user: { only: [:name, :surname] }, assigned: { only: [:name, :surname] } })
+      to_json(include: { user: { only: [:name] }, assigned: { only: [:name] } })
     end
 
     def self.search(query, page_no=1, per_page=10)
