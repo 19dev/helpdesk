@@ -15,7 +15,7 @@
 
       <div id="Helpdesk::Ticket_<%= ticket.id %>_discussions_list" class="portlet-body">
         <ul id="Helpdesk::Ticket_<%= ticket.id %>_discussions">
-          <%= render partial: "nimbos/discussions/discussion", collection: ticket.discussions.latests, as: :discussion %>
+          <%= render partial: "nimbos/discussions/discussion", collection: ticket.discussions, as: :discussion %>
         </ul>
       </div>
     </div>
