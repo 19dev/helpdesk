@@ -1,0 +1,7 @@
+<% if @team.errors.present? %>
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= escape_javascript error_messages_for(@team) %></div>');
+  toastr.error('<%= j error_messages_for(@team) %>');
+<% else %>
+  $("#team_<%= @team.id %>").remove();
+  $("#team_profile").html('');
+<% end %>

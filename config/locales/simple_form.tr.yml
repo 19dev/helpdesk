@@ -1,0 +1,10 @@
+tr:
+  simple_form:
+    labels:
+      ticket:
+        title: "Talep Başlığı"
+        desc: "Talep Detayları"
+    placeholders:
+      ticket:
+        title: "Kolayca anlaşılabilecek bir başlık belirtin"
+        desc: "Talebiniz ile ilgili detayları girebilirsiniz"

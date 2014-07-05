@@ -1,0 +1,10 @@
+en:
+  simple_form:
+    labels:
+      ticket:
+        title: "Request Title"
+        desc: "Request Details"
+    placeholders:
+      ticket:
+        title: "Write a rememberable title..."
+        desc: "Write request details..."
