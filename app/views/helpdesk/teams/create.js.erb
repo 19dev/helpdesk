@@ -1,0 +1,13 @@
+<% if @team.errors.present? %>
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= escape_javascript error_messages_for(@team) %></div>');
+  toastr.error('<%= j error_messages_for(@team) %>');
+<% else %>
+  $("#teams_list").append('<li class="list-group-item"><%= link_to @team.title, helpdesk.team_path(@team), remote: true %></li>');
+  $("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= escape_javascript(flash[:notice]) %></div>');
+	$('#team_profile').html('<%= escape_javascript(render @team) %>');
+	$("#cost_title").focus();
+<% end %>
+jQuery(document).ready(function() {
+  App.initAjax();
+  ComponentsPickers.init();
+});

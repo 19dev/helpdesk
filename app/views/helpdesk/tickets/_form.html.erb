@@ -11,8 +11,9 @@
 
         <div class="row">
           <div class="col-md-8">
-            <%= f.input :title, label: t("tickets.label.title"), hint: t("tickets.hint.title") %>
-            <%= f.input :desc, label: t("tickets.label.desc"), placeholder: t("tickets.placeholder.desc"), input_html: { rows: "4" } %>
+            <%= f.input :title %>
+            <%= f.input :team_id, as: :select, collection: Helpdesk::Team.all %>
+            <%= f.input :desc, input_html: { rows: "4" } %>
           </div>
         </div>
       </div>

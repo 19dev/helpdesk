@@ -1,0 +1,6 @@
+$('#team_profile').html('<%= escape_javascript(render @team) %>');
+//$("#cost_title").focus();
+jQuery(document).ready(function() {
+  App.initAjax();
+  ComponentsPickers.init();
+});

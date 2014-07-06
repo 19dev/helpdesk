@@ -160,7 +160,7 @@ module Helpdesk
     end
 
     def ticket_params
-      params.require(:ticket).permit(:assigned_id, :close_date, :desc, :status, :title)
+      params.require(:ticket).permit(:assigned_id, :close_date, :desc, :status, :title, :team_id)
     end
 
   end

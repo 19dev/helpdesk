@@ -6,6 +6,7 @@ module Helpdesk
 
     belongs_to :user, class_name: "Nimbos::User"
     belongs_to :assigned, class_name: "Nimbos::User"
+    belongs_to :team
 
     has_many   :ticket_actions, dependent: :destroy
     has_many   :discussions, class_name: "Nimbos::Discussion", as: :target, dependent: :destroy
