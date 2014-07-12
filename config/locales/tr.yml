@@ -14,25 +14,6 @@ tr:
       edit_page_header: "Talep Bilgisi Güncelleme"
       new_page_header: "Yeni Talep"
       small_form_help: ""
-    label:
-      reference: "Talep No"
-      title: "Talep Başlığı"
-      desc: "Talep Detayları"
-      status: "Talep Durumu"
-      assigned: "Çözüm Sorumlusu"
-      close_date: "Kapama Tarihi"
-      created_at: "Talep Tarihi"
-      action_date: "İşlem Tarihi"
-      action_user: "İşlem Kullanıcısı"
-      action_desc: "İşlem Açıklaması"
-      user: "Talep Sahibi"
-      not_assigned_yet: "Kimseye Atanmamış"
-      assign_to_someone: "Çözüm Sorumlusu Belirleyin"
-      change_responsible: "Çözüm Sorumlusunu Değiştir"
-    placeholder:
-      desc: "Talebiniz ile ilgili detayları girebilirsiniz"
-    hint:
-      title: "Kolayca anlaşılabilecek bir başlık belirtin"
     action:
       create: "Talep Bilgisini Kaydet"
       assign: "Talebi Ata"

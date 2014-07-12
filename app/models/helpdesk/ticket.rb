@@ -23,14 +23,14 @@ module Helpdesk
 
     def self.search(search_id)
       search = Roster::Search.find(search_id)
-      tickets = Helpdesk::Ticket.latest
+      tickets = Helpdesk::Ticket.order(created_at: :desc)
       tickets = tickets.where("reference like ?", "%#{search.filter["reference"]}%") if search.filter["reference"].present?
       tickets = tickets.where("title like ?", "%#{search.filter["title"]}%") if search.filter["title"].present?
       tickets = tickets.where(user_id: search.filter["user_id"]) if search.filter["user_id"].present?
       tickets = tickets.where(assigned_id: search.filter["assigned_id"]) if search.filter["assigned_id"].present?
       tickets = tickets.where(status: search.filter["status"]) if search.filter["status"].present?
-      tickets = tickets.where(created_at: search.filter["create_date1"]..search.filter["create_date2"]) if (search.filter["create_date1"].present? && self.filter["create_date2"].present?)
-      tickets#.page(page_no).per(per_page)
+      tickets = tickets.where(create_date: search.filter["create_date1"]..search.filter["create_date2"]) if (search.filter["create_date1"].present? && self.filter["create_date2"].present?)
+      tickets
     end
 
     def self.ticket_status

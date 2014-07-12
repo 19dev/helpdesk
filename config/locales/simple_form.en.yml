@@ -2,9 +2,29 @@ en:
   simple_form:
     labels:
       ticket:
+        reference: "Request No"
         title: "Request Title"
         desc: "Request Details"
+        status: "Request Status"
+        assigned: "Assigned User"
+        close_date: "Close Date"
+        created_at: "Request Date"
+        action_date: "Action Date"
+        action_user: "Action User"
+        action_desc: "Action Description"
+        user: "Request Owner"
+        not_assigned_yet: "Not Assigned Yet"
+        assign_to_someone: "Assign to someone"
+        change_responsible: "Change Assigned User"
+      team:
+        title: "Request Title"
+        email: "email"
     placeholders:
       ticket:
         title: "Write a rememberable title..."
         desc: "Write request details..."
+      team:
+        desc: "Write request details..."
+    hints:
+      ticket:
+        title: "Write a rememberable title..."

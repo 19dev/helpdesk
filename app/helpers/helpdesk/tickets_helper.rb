@@ -28,10 +28,6 @@ module Helpdesk
 				end
 			end
 
-			content <<	(content_tag :div, class: "pagination" do
-				paginate tickets
-			end)
-
 			content.html_safe
 		end
 

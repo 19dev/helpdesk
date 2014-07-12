@@ -2,9 +2,27 @@ tr:
   simple_form:
     labels:
       ticket:
+        reference: "Talep No"
         title: "Talep Başlığı"
         desc: "Talep Detayları"
+        status: "Talep Durumu"
+        assigned: "Çözüm Sorumlusu"
+        close_date: "Kapama Tarihi"
+        created_at: "Talep Tarihi"
+        action_date: "İşlem Tarihi"
+        action_user: "İşlem Kullanıcısı"
+        action_desc: "İşlem Açıklaması"
+        user: "Talep Sahibi"
+        not_assigned_yet: "Kimseye Atanmamış"
+        assign_to_someone: "Çözüm Sorumlusu Belirleyin"
+        change_responsible: "Çözüm Sorumlusunu Değiştir"
+      team:
+        title: "Talep Başlığı"
+        email: "email"
     placeholders:
       ticket:
         title: "Kolayca anlaşılabilecek bir başlık belirtin"
         desc: "Talebiniz ile ilgili detayları girebilirsiniz"
+    hints:
+      ticket:
+        title: "Kolayca anlaşılabilecek bir başlık belirtin"
