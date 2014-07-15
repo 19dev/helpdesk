@@ -41,3 +41,8 @@ tr:
       ticket_updated: "Talep başarılı bir şekilde güncellendi."
       ticket_action_created: "Talep hareketi başarılı bir şekilde oluşturuldu."
       ticket_action_updated: "Talep hareketi başarılı bir şekilde güncellendi."
+  activerecord:
+    models:
+      helpdesk/ticket:
+        one: "Talep"
+        other: "Talepler"

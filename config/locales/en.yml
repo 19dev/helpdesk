@@ -41,3 +41,8 @@ en:
       ticket_updated: "Ticket was successfully updated."
       ticket_action_created: "Ticket action was successfully created."
       ticket_action_updated: "Ticket action was successfully updated."
+  activerecord:
+    models:
+      helpdesk/ticket:
+        one: "Request"
+        other: "Requests"
