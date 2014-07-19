@@ -1,8 +1,12 @@
 module Helpdesk
   class TicketAction < ActiveRecord::Base
-    belongs_to :user, class_name: Assetim.user_class
+
+    belongs_to :user, class_name: Helpdesk.user_class
     belongs_to :ticket
 
-    #attr_accessible :action_code, :assigned, :user_id
+    validates :action_code, presence: true, length: { maximum: 30 }
+    validates :assigned, length: { maximum: 100 }
+    validates_associated :ticket
+    
   end
 end

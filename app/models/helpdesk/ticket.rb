@@ -4,17 +4,21 @@ module Helpdesk
     # include Tire::Model::Search
     # include Tire::Model::Callbacks
 
-    belongs_to :user, class_name: "Nimbos::User"
-    belongs_to :assigned, class_name: "Nimbos::User"
+    belongs_to :user, class_name: Helpdesk.user_class
+    belongs_to :assigned, class_name: Helpdesk.user_class
     belongs_to :team
 
     has_many   :ticket_actions, dependent: :destroy
-    has_many   :discussions, class_name: "Nimbos::Discussion", as: :target, dependent: :destroy
+    has_many   :discussions, class_name: Helpdesk.discussion_class, as: :target, dependent: :destroy
 
-    #validates :reference, presence: { on: :update }, uniqueness: { case_sensitive: false, scope: :patron_id }
     validates :title, presence: true, length: { maximum: 255 }
     validates :user_id, presence: true
     validates :status, presence: true
+    validates :desc, presence: true, length: { maximum: 500 }
+    validates :status, inclusion: { in: %w(active closed cancelled) }
+    validates :reference, presence: true
+    validates_associated :team
+    validates_associated :assigned
 
     default_scope { where(patron_id: Nimbos::Patron.current_id) }
     scope :latest, order("created_at desc")
