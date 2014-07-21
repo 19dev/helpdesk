@@ -5,6 +5,7 @@ tr:
         reference: "Talep No"
         title: "Talep Başlığı"
         desc: "Talep Detayları"
+        team_id: "Sorumlu Ekip"
         status: "Talep Durumu"
         assigned: "Çözüm Sorumlusu"
         close_date: "Kapama Tarihi"
@@ -26,3 +27,22 @@ tr:
     hints:
       ticket:
         title: "Kolayca anlaşılabilecek bir başlık belirtin"
+    helpers:
+      ticket:
+        reopen: "Tekrar Aç"
+        assign_to_someone: "Talebi Ata"
+        change_responsible: "Sorumlu Değiştir"
+    options:
+      ticket:
+        status:
+          open: "Aktif-Bekliyor"
+          assigned: "Atanmış-Çalışılıyor"
+          closed: "Kapatılmış"
+        action_codes:
+          created: "talep kaydını oluşturdu"
+          assigned: "talep kaydı için çözüm sorumlusunu %{user} olarak belirledi"
+          self_assigned: "talep kaydını çözmek üzere üzerine aldı"
+          closed: "talebi kapattı"
+          reopened: "talebi tekrar açtı"
+          cancelled: "talebi iptal etti"
+          updated: "talebi güncelledi"

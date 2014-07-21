@@ -1,20 +1,20 @@
 <div id="tickets_index" class="row">
 
-  <%= render "shared/page_title", page_title: "Talepler", page_small_title: "Ekip arkadaşlarınızdan gelen sistem talepleri", model_name: "tickets", model_path: "helpdesk/tickets" %>
+  <%= render "shared/page_title", page_title: Helpdesk::Ticket.model_name.human(count: 2), page_small_title: "", model_name: "tickets", model_path: "helpdesk/tickets" %>
 
   <div class="inbox">
     <div class="col-md-2">
       <ul class="inbox-nav margin-bottom-10">
         <li class="compose-btn">
           <%= link_to helpdesk.new_ticket_path, class: "btn green" do %>
-            <i class="fa fa-edit"></i> Yeni Talep
+            <i class="fa fa-bug"></i> <%= t("simple_form.helpers.defaults.new", model: Helpdesk::Ticket.model_name.human) %>
           <% end %>
         </li>
       </ul>
     </div>
     <div class="col-md-10">
       <div class="inbox-header">
-        <h1 class="pull-left">Talepler <small>En son eklenen talepler</small></h1>
+        <h1 class="pull-left"><%= t("simple_form.labels.defaults.list", model: Helpdesk::Ticket.model_name.human) %></h1>
         <%= render "shared/quick_search_form", model_name: "Helpdesk::Ticket" %>
       </div>
 

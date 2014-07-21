@@ -3,7 +3,7 @@
   <% content_for(:breadcrumb_actions, flush: true) do %>
     <%= render "actions", ticket: @ticket %>
   <% end %>
-  <%= render "shared/page_title", page_title: "Talepler", page_small_title: "Ekip arkadaşlarınızdan gelen sistem talepleri", model_name: "tickets", model_path: "helpdesk/tickets" %>
+  <%= render "shared/page_title", page_title: Helpdesk::Ticket.model_name.human(count: 2), page_small_title: "Ekip arkadaşlarınızdan gelen sistem talepleri", model_name: "tickets", model_path: "helpdesk/tickets" %>
 
 	<%= render partial: "profile", locals: { ticket: @ticket } %>
 

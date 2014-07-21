@@ -8,10 +8,10 @@
     <div class="portlet box grey">
       <% content_for(:portlet_actions, flush: true) do %>
         <%= link_to nimbos.new_discussion_url(ticket_id: ticket.id), class: "btn green btn-sm" do %>
-          <i class="fa fa-comments"></i> Start new discussion
+          <%= iconed_link_label(Nimbos::Discussion.model_name.human, "fa-comments", "start") %>
         <% end %>
       <% end %>
-      <%= render "shared/portlet_title", title: "Konuşmalar" %>
+      <%= render "shared/portlet_title", title: Nimbos::Discussion.model_name.human(count: 2) %>
 
       <div id="Helpdesk::Ticket_<%= ticket.id %>_discussions_list" class="portlet-body">
         <ul id="Helpdesk::Ticket_<%= ticket.id %>_discussions">
@@ -24,7 +24,7 @@
       <% content_for(:portlet_actions, flush: true) do %>
         <%= nil %>
       <% end %>    
-      <%= render "shared/portlet_title", title: "Talep Geçmişi" %>
+      <%= render "shared/portlet_title", title: Helpdesk::TicketAction.model_name.human(count: 2) %>
       <div id="Helpdesk::Ticket_<%= ticket.id %>_actions_list" class="portlet-body">
         <%= ticket_actions_list_table(ticket.ticket_actions) %>
       </div>

@@ -2,47 +2,53 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  tickets:
-    defaults:
-      page_header: "Request Management"
-      intro_message: ""
-      last_records_title: "Last Added Requests"
-      new_record_label: "Create New Request"
-      edit_record_label: "Edit Request"
-      fullsearch_placeholder: "Search requests with keywords..."
-      show_page_header: "Request Info"
-      edit_page_header: "Edit Request"
-      new_page_header: "New Request"
-      small_form_help: ""
-    action:
-      create: "Save Request Info"
-      assign: "Assign this Request"
-      close: "Close Request"
-      reopen: "Re-Open Request"
-      delete: "Delete Request"  
-      new_message: "Post a new message"    
-    status:
-      open: "Open-Waiting"
-      assigned: "Assigned-On Progress"
-      closed: "Closed"
-    action_codes:
-      created: "created this ticket"
-      assigned: "assigned ticket to %{user}"
-      self_assigned: "took to solve the ticket"
-      closed: "closed ticket"
-      reopened: "re-opened ticket"
-      cancelled: "cancelled ticket"
-      updated: "updated ticket"
-    message:
-      intro: "You can follow your ticket information."
-      destroy_confirm: "Are You Sure Destroy?"
-      new_ticket_intro: "You can create new ticket or edit an old one."
-      ticket_created: "Ticket was successfully created."
-      ticket_updated: "Ticket was successfully updated."
-      ticket_action_created: "Ticket action was successfully created."
-      ticket_action_updated: "Ticket action was successfully updated."
+  # tickets:
+  #   defaults:
+  #     page_header: "Request Management"
+  #     intro_message: ""
+  #     last_records_title: "Last Added Requests"
+  #     new_record_label: "Create New Request"
+  #     edit_record_label: "Edit Request"
+  #     fullsearch_placeholder: "Search requests with keywords..."
+  #     show_page_header: "Request Info"
+  #     edit_page_header: "Edit Request"
+  #     new_page_header: "New Request"
+  #     small_form_help: ""
+  #   action:
+  #     create: "Save Request Info"
+  #     assign: "Assign this Request"
+  #     close: "Close Request"
+  #     reopen: "Re-Open Request"
+  #     delete: "Delete Request"  
+  #     new_message: "Post a new message"    
+  #   status:
+  #     open: "Open-Waiting"
+  #     assigned: "Assigned-On Progress"
+  #     closed: "Closed"
+  #   action_codes:
+  #     created: "created this ticket"
+  #     assigned: "assigned ticket to %{user}"
+  #     self_assigned: "took to solve the ticket"
+  #     closed: "closed ticket"
+  #     reopened: "re-opened ticket"
+  #     cancelled: "cancelled ticket"
+  #     updated: "updated ticket"
+  #   message:
+  #     intro: "You can follow your ticket information."
+  #     destroy_confirm: "Are You Sure Destroy?"
+  #     new_ticket_intro: "You can create new ticket or edit an old one."
+  #     ticket_created: "Ticket was successfully created."
+  #     ticket_updated: "Ticket was successfully updated."
+  #     ticket_action_created: "Ticket action was successfully created."
+  #     ticket_action_updated: "Ticket action was successfully updated."
   activerecord:
     models:
       helpdesk/ticket:
         one: "Request"
         other: "Requests"
+      helpdesk/ticket_action:
+        one: "Request Action"
+        other: "Request History"
+      helpdesk/team:
+        one: "Team"
+        other: "Teams"

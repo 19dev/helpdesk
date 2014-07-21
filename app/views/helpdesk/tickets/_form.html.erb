@@ -1,5 +1,5 @@
 <div class="portlet box green">
-  <%= render "shared/portlet_title", title: t("tickets.defaults.show_page_header") %>
+  <%= render "shared/portlet_title", title: Helpdesk::Ticket.model_name.human %>
 
   <div class="portlet-body form">
 
@@ -18,8 +18,8 @@
         </div>
       </div>
       <div class="form-actions">
-        <%= f.submit t("tickets.action.create"), class: "btn btn-success" %>
-        <%= link_to "Cancel", tickets_path, class: "btn" %>
+        <%= f.submit t("simple_form.helpers.submit.defaults.create"), class: "btn btn-success" %>
+        <%= link_to t("simple_form.helpers.defaults.cancel"), helpdesk.tickets_path, class: "btn" %>
       </div>
     <% end %>
   </div>

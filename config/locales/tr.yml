@@ -2,47 +2,53 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 tr:
-  tickets:
-    defaults:
-      page_header: "Talep Yönetimi"
-      intro_message: ""
-      last_records_title: "En Son Oluşturulmuş Talepler"
-      new_record_label: "Yeni Talep Oluştur"
-      edit_record_label: "Talebi Güncelle"
-      fullsearch_placeholder: "Talep ile ilgili birşeyler yazın"
-      show_page_header: "Talep Bilgisi"
-      edit_page_header: "Talep Bilgisi Güncelleme"
-      new_page_header: "Yeni Talep"
-      small_form_help: ""
-    action:
-      create: "Talep Bilgisini Kaydet"
-      assign: "Talebi Ata"
-      close: "Talebi Kapat"
-      reopen: "Talebi Tekrar Aç"
-      delete: "Talebi Sil"
-      new_message: "Yeni Mesaj Gönder"
-    status:
-      open: "Aktif-Bekliyor"
-      assigned: "Atanmış-Çalışılıyor"
-      closed: "Kapatılmış"
-    action_codes:
-      created: "talep kaydını oluşturdu"
-      assigned: "talep kaydı için çözüm sorumlusunu %{user} olarak belirledi"
-      self_assigned: "talep kaydını çözmek üzere üzerine aldı"
-      closed: "talebi kapattı"
-      reopened: "talebi tekrar açtı"
-      cancelled: "talebi iptal etti"
-      updated: "talebi güncelledi"
-    message:
-      intro: "Talep bilgilerinizi takip edebilirsiniz."
-      destroy_confirm: "Silmek istediğinize emin misiniz?"
-      new_ticket_intro: "Yeni bir talep girebilir veya varolanı güncelleyebilirsiniz."
-      ticket_created: "Talep başarılı bir şekilde oluşturuldu."
-      ticket_updated: "Talep başarılı bir şekilde güncellendi."
-      ticket_action_created: "Talep hareketi başarılı bir şekilde oluşturuldu."
-      ticket_action_updated: "Talep hareketi başarılı bir şekilde güncellendi."
+  # tickets:
+  #   defaults:
+  #     page_header: "Talep Yönetimi"
+  #     intro_message: ""
+  #     last_records_title: "En Son Oluşturulmuş Talepler"
+  #     new_record_label: "Yeni Talep Oluştur"
+  #     edit_record_label: "Talebi Güncelle"
+  #     fullsearch_placeholder: "Talep ile ilgili birşeyler yazın"
+  #     show_page_header: "Talep Bilgisi"
+  #     edit_page_header: "Talep Bilgisi Güncelleme"
+  #     new_page_header: "Yeni Talep"
+  #     small_form_help: ""
+  #   action:
+  #     create: "Talep Bilgisini Kaydet"
+  #     assign: "Talebi Ata"
+  #     close: "Talebi Kapat"
+  #     reopen: "Talebi Tekrar Aç"
+  #     delete: "Talebi Sil"
+  #     new_message: "Yeni Mesaj Gönder"
+  #   status:
+  #     open: "Aktif-Bekliyor"
+  #     assigned: "Atanmış-Çalışılıyor"
+  #     closed: "Kapatılmış"
+  #   action_codes:
+  #     created: "talep kaydını oluşturdu"
+  #     assigned: "talep kaydı için çözüm sorumlusunu %{user} olarak belirledi"
+  #     self_assigned: "talep kaydını çözmek üzere üzerine aldı"
+  #     closed: "talebi kapattı"
+  #     reopened: "talebi tekrar açtı"
+  #     cancelled: "talebi iptal etti"
+  #     updated: "talebi güncelledi"
+  #   message:
+  #     intro: "Talep bilgilerinizi takip edebilirsiniz."
+  #     destroy_confirm: "Silmek istediğinize emin misiniz?"
+  #     new_ticket_intro: "Yeni bir talep girebilir veya varolanı güncelleyebilirsiniz."
+  #     ticket_created: "Talep başarılı bir şekilde oluşturuldu."
+  #     ticket_updated: "Talep başarılı bir şekilde güncellendi."
+  #     ticket_action_created: "Talep hareketi başarılı bir şekilde oluşturuldu."
+  #     ticket_action_updated: "Talep hareketi başarılı bir şekilde güncellendi."
   activerecord:
     models:
       helpdesk/ticket:
         one: "Talep"
         other: "Talepler"
+      helpdesk/ticket_action:
+        one: "Talep Hareketi"
+        other: "Talep Hareketleri"
+      helpdesk/team:
+        one: "Takım"
+        other: "Takımlar"

@@ -1,6 +1,6 @@
 <div class="row">
 
-  <%= render "shared/page_title", page_title: "Talepler", page_small_title: "Ekip arkadaşlarınızdan gelen sistem talepleri", model_name: "tickets", model_path: "helpdesk/tickets" %>
+  <%= render "shared/page_title", page_title: Helpdesk::Ticket.model_name.human(count: 2), page_small_title: "", model_name: "tickets", model_path: "helpdesk/tickets" %>
 
   <div class="col-md-12">
   	<%= render 'form' %>

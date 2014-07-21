@@ -7,9 +7,5 @@
     <%= link_to "Home", main_app.root_url %> 
     <i class="fa fa-angle-right"></i>
   </li>
-  <li>
-    <%= link_to "Helpdesk", helpdesk.tickets_path %> 
-    <i class="fa fa-angle-right"></i>
-  </li>
-  <li><%= link_to "Talepler", helpdesk.tickets_path %></li>
+  <li><%= link_to (Helpdesk::Ticket.model_name.human(count: 2)), helpdesk.tickets_path %></li>
 </ul>

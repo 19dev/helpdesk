@@ -1,4 +1,4 @@
-<h1><%= t("teams.title.teams") %></h1>
+<h1><%= Helpdesk::Team.model_name.human(count: 2) %></h1>
 <hr>
 <div class="row">
 	
@@ -7,18 +7,12 @@
 			<% @teams.each do |team| %>
 				<li class="list-group-item">
 					<%= link_to team.title, helpdesk.team_path(team), remote: true %>
-					<% if @position %>
-					  <span class="pull-right"><%= link_to t("teams.label.copy_costs"), copycosts_team_path(team, position_id: @position.id), class: "btn btn-sm green" %></span>
-					<% end %>
-					<% if @lead %>
-					  <span class="pull-right"><%= link_to t("teams.label.copy_costs"), copycosts_team_path(team, lead_id: @lead.id), class: "btn btn-sm blue" %></span>
-					<% end %>
 				</li>
 			<% end %>
 		</ul>
 
 		<div>
-			<%= link_to t("teams.label.add_team"), helpdesk.teams_path, class: "btn blue" %>
+			<%= link_to t("simple_form.helpers.defaults.add", model: Helpdesk::Team.model_name.human), helpdesk.teams_path, class: "btn blue" %>
 		</div>
 
 	</div>

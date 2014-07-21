@@ -1,10 +1,13 @@
 <div id="team_#{team.id}" class="">
 
   <div class="col-md-12">
-    <h2><%= team.title %></h2>
-    <h2><%= team.email %></h2>
-    <%= link_to team, method: :delete, remote: true, data: { confirm: t("defaults.messages.destroy_confirm") }, title: t("defaults.link.destroy"), class: "btn red" do %>
-  		<i class="fa fa-trash-o"></i>
-  	<% end %>
+    <h2>
+    	<%= team.title %> <small class="text-muted"><%= team.email %></small>
+    	<span>
+        <%= link_to team, method: :delete, remote: true, data: { confirm: t("simple_form.messages.defaults.destroy_confirm") }, title: t("simple_form.helpers.defaults.delete"), class: "btn" do %>
+     	    <i class="fa fa-trash-o"></i>
+  	    <% end %>
+  	  </span>
+  	</h2>
   </div>
 </div>

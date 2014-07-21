@@ -4,7 +4,7 @@ module Helpdesk
   class TicketsController < ApplicationController
     
     before_filter :require_login
-    before_filter(:only => [:index]) { |c| c.set_tab "helpdesknavigator" if params[:home].present? }
+    before_filter(:only => [:index]) { |c| c.set_tab "helpdesknavigator" unless request.xhr? }
 
     def index
       @tickets = Helpdesk::Ticket.order("created_at desc").page(params[:page]).per(10)

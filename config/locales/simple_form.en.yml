@@ -5,6 +5,7 @@ en:
         reference: "Request No"
         title: "Request Title"
         desc: "Request Details"
+        team_id: "Relevant Team"
         status: "Request Status"
         assigned: "Assigned User"
         close_date: "Close Date"
@@ -23,8 +24,25 @@ en:
       ticket:
         title: "Write a rememberable title..."
         desc: "Write request details..."
-      team:
-        desc: "Write request details..."
     hints:
       ticket:
         title: "Write a rememberable title..."
+    helpers:
+      ticket:
+        reopen: "Re-Open Request"
+        assign_to_someone: "Assing this Request"
+        change_responsible: "Change Team"
+    options:
+      ticket:
+        status:
+          open: "Open-Waiting"
+          assigned: "Assigned-On Progress"
+          closed: "Closed"
+        action_codes:
+          created: "created this ticket"
+          assigned: "assigned ticket to %{user}"
+          self_assigned: "took to solve the ticket"
+          closed: "closed ticket"
+          reopened: "re-opened ticket"
+          cancelled: "cancelled ticket"
+          updated: "updated ticket"
