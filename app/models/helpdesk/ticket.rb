@@ -13,12 +13,12 @@ module Helpdesk
 
     validates :title, presence: true, length: { maximum: 255 }
     validates :user_id, presence: true
-    validates :status, presence: true
+    #validates :status, presence: true
     validates :desc, presence: true, length: { maximum: 500 }
     validates :status, inclusion: { in: %w(active closed cancelled) }
-    validates :reference, presence: true
-    validates_associated :team
-    validates_associated :assigned
+    #validates :reference, presence: true
+    #validates_associated :team
+    #validates_associated :assigned
 
     default_scope { where(patron_id: Nimbos::Patron.current_id) }
     scope :latest, order("created_at desc")

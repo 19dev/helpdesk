@@ -5,10 +5,12 @@
     <h4><%= Helpdesk::Ticket.model_name.human %></h4>
   </div>
 
-	<%= simple_form_for @ticket, validate: true, remote: true do |f| %>
+  <%= simple_form_for @ticket, validate: true, remote: true do |f| %>
 
     <div class="modal-body">
-	    <%= f.error_notification %>
+      <%= f.error_notification %>
+      <%= f.error :base, :error_method => :to_sentence, class: "alert alert-danger" %>
+	    
       <%= f.association :assigned, label_method: :to_s, value_method: :id, collection: current_patron.users.active.all(order: 'name'), include_blank: false %>
     </div>
 

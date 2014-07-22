@@ -49,7 +49,7 @@ module Helpdesk
     def create
       @ticket = Helpdesk::Ticket.new(ticket_params)
       @ticket.user_id = current_user.id
-      @ticket.status = "open"
+      @ticket.status = "active"
  
       respond_to do |format|
         if @ticket.save

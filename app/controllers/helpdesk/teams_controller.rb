@@ -25,7 +25,7 @@ module Helpdesk
       @team.user_id = current_user.id
       respond_to do |format|
         if @team.save
-          flash[:notice] = t("teams.message.created")
+          flash[:notice] = t("simple_form.messages.default.created", model: Helpdesk::Team.model_name.human)
           format.html { redirect_to @team }
           format.json { render json: @team, status: :created, location: @team }
           format.js
@@ -42,7 +42,7 @@ module Helpdesk
       @team.user_id = current_user.id 
       respond_to do |format|
         if @team.update_attributes(team_params)
-          format.html { redirect_to @team, notice: t('teams.message.team_action_updated') }
+          format.html { redirect_to @team, notice: t("simple_form.messages.default.updated", model: Helpdesk::Team.model_name.human) }
           format.json { head :no_content }
         else
           format.html { render action: "edit" }
@@ -54,7 +54,7 @@ module Helpdesk
     def destroy
       @team = Team.find(params[:id])
       @team.destroy
-      flash[:notice] = t("teams.message.deleted")
+      flash[:notice] = t("simple_form.messages.default.deleted", model: Helpdesk::Team.model_name.human)
 
       respond_to do |format|
         format.html { redirect_to teams_url }

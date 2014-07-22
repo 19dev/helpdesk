@@ -6,7 +6,7 @@ module Helpdesk
 
     validates :action_code, presence: true, length: { maximum: 30 }
     validates :assigned, length: { maximum: 100 }
-    validates_associated :ticket
+    #validates_associated :ticket
     
   end
 end
