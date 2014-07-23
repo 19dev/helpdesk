@@ -29,6 +29,8 @@ en:
       not_assigned_yet: "Not Assigned Yet"
       assign_to_someone: "Assign to someone"
       change_responsible: "Change Assigned User"
+      priority:  "Priority"
+      work_time: "Work Time"
     placeholder:
       desc: "Write request details..."
     hint:

@@ -9,7 +9,7 @@
 
     <div class="modal-body">
 	    <%= f.error_notification %>
-      <%= f.association :assigned, label: t("tickets.label.assigned"), label_method: :to_s, value_method: :id, collection: current_patron.users.active.all(order: 'name'), include_blank: false, prompt: "Assing this request to" %>
+      <%= f.association :assigned, label: t("tickets.label.assigned"), label_method: :to_s, value_method: :id, collection: current_patron.users.active.all(order: 'name'), include_blank: false, prompt: "Assign this request to" %>
     </div>
 
     <div class="modal-footer">

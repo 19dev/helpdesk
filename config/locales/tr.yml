@@ -29,6 +29,8 @@ tr:
       not_assigned_yet: "Kimseye Atanmamış"
       assign_to_someone: "Çözüm Sorumlusu Belirleyin"
       change_responsible: "Çözüm Sorumlusunu Değiştir"
+      priority: "Öncelik"
+      work_time: "İş Süresi"
     placeholder:
       desc: "Talebiniz ile ilgili detayları girebilirsiniz"
     hint:

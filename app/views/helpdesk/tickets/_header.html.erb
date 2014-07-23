@@ -40,7 +40,7 @@
           <% else %>
             <i class="fa fa-random"></i>
             <%= t("tickets.label.not_assigned_yet") %>,
-            <%= link_to t("tickets.label.assign_to_someone"), edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
+            <%#= link_to t("tickets.label.assign_to_someone"), edit_ticket_path(ticket, nolayout: 1), "data-toggle" => "modal", "data-target" => "#newAgileRecord" %>
           <% end %>
         </p>
       </div>

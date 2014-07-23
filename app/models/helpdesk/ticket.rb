@@ -15,7 +15,9 @@ module Helpdesk
     validates :title, presence: true, length: { maximum: 255 }
     validates :user_id, presence: true
     validates :status, presence: true
-
+    validates :priority, presence: true, length: { maximum: 15 }
+    validates :work_time, presence: false
+    
     default_scope { where(patron_id: Nimbos::Patron.current_id) }
     scope :latest, order("created_at desc")
 
@@ -23,7 +25,7 @@ module Helpdesk
 
     def self.search(search_id)
       search = Roster::Search.find(search_id)
-      tickets = Helpdesk::Ticket.latest
+      tickets = Helpdesk::Ticket.order(created_at: :desc)
       tickets = tickets.where("reference like ?", "%#{search.filter["reference"]}%") if search.filter["reference"].present?
       tickets = tickets.where("title like ?", "%#{search.filter["title"]}%") if search.filter["title"].present?
       tickets = tickets.where(user_id: search.filter["user_id"]) if search.filter["user_id"].present?
