@@ -54,7 +54,7 @@ module Helpdesk
       respond_to do |format|
         if @ticket.save
           create_action("created")
-          format.html { redirect_to @ticket, notice: t('tickets.message.ticket_created') }
+          format.html { redirect_to @ticket, notice: t('simple_form.messages.defaults.created', model: Helpdesk::Ticket.model_name.human) }
           format.json { render json: @ticket, status: :created, location: @ticket }
         else
           format.html { render action: "new" }
@@ -80,10 +80,9 @@ module Helpdesk
 
         respond_to do |format|
           if @ticket.update_attributes(ticket_params)
-            flash[:notice] = t('tickets.message.ticket_updated')
-            format.html { redirect_to @ticket }
+            format.html { redirect_to @ticket, notice: t('simple_form.messages.defaults.updated', model: Helpdesk::Ticket.model_name.human) }
             format.json { head :no_content }
-            format.js   { }
+            format.js   { flash.now[:notice] = t('simple_form.messages.defaults.updated', model: Helpdesk::Ticket.model_name.human) }
           else
             format.html { render action: "edit" }
             format.json { render json: @ticket.errors, status: :unprocessable_entity }
@@ -103,7 +102,7 @@ module Helpdesk
       @ticket.destroy
   
       respond_to do |format|
-        format.html { redirect_to tickets_url }
+        format.html { redirect_to tickets_url, notice: t('simple_form.messages.defaults.deleted', model: Helpdesk::Ticket.model_name.human) }
         format.json { head :no_content }
       end
     end

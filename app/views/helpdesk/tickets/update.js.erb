@@ -1,3 +1,13 @@
-$('#ticket_<%= @ticket.id %>_profile_header').html("<%= j render partial: 'header', locals: { ticket: @ticket } %>");
-$('#newAgileRecord').modal('hide')
-$("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= escape_javascript(flash[:notice]) %></div>');
+<% if @ticket.errors.present? %>
+  toastr.error('<%= j error_messages_for(@ticket) %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-error"><%= j error_messages_for(@ticket) %></div>');
+  $("#messages").fadeOut(4000);
+<% else %>
+  $('#ticket_<%= @ticket.id %>_profile_header').html("<%= j render partial: 'header', locals: { ticket: @ticket } %>");
+  toastr.info('<%= j flash[:notice] %>');
+  $("#messages").show();
+  $("#messages").html('<div id="flash_notice" class="alert alert-notice"><%= j flash[:notice] %></div>');
+  $("#messages").fadeOut(5000);
+  $('#modalWindow').modal('hide');
+<% end %>

@@ -25,10 +25,9 @@ module Helpdesk
       @team.user_id = current_user.id
       respond_to do |format|
         if @team.save
-          flash[:notice] = t("simple_form.messages.default.created", model: Helpdesk::Team.model_name.human)
-          format.html { redirect_to @team }
+          format.html { redirect_to @team, notice: t("simple_form.messages.default.created", model: Helpdesk::Team.model_name.human) }
           format.json { render json: @team, status: :created, location: @team }
-          format.js
+          format.js { flash.now[:notice] = t("simple_form.messages.default.created", model: Helpdesk::Team.model_name.human) }
         else
           format.html { render action: "new" }
           format.json { render json: @team.errors, status: :unprocessable_entity }
@@ -44,9 +43,11 @@ module Helpdesk
         if @team.update_attributes(team_params)
           format.html { redirect_to @team, notice: t("simple_form.messages.default.updated", model: Helpdesk::Team.model_name.human) }
           format.json { head :no_content }
+          format.js { flash.now[:notice] = t("simple_form.messages.default.updated", model: Helpdesk::Team.model_name.human) }
         else
           format.html { render action: "edit" }
           format.json { render json: @team.errors, status: :unprocessable_entity }
+          format.js
         end
       end
     end
@@ -54,12 +55,11 @@ module Helpdesk
     def destroy
       @team = Team.find(params[:id])
       @team.destroy
-      flash[:notice] = t("simple_form.messages.default.deleted", model: Helpdesk::Team.model_name.human)
 
       respond_to do |format|
-        format.html { redirect_to teams_url }
+        format.html { redirect_to teams_url, notice: t("simple_form.messages.default.deleted", model: Helpdesk::Team.model_name.human) }
         format.json { head :ok }
-        format.js
+        format.js { flash[:notice] = t("simple_form.messages.default.deleted", model: Helpdesk::Team.model_name.human) }
       end
     end
 
