@@ -12,7 +12,7 @@ module Helpdesk
     has_many   :discussions, class_name: Helpdesk.discussion_class, as: :target, dependent: :destroy
 
     validates :title, presence: true, length: { maximum: 255 }
-    validates :user_id, presence: true
+    #validates :user_id, presence: true
     #validates :status, presence: true
     validates :desc, presence: true, length: { maximum: 500 }
     validates :status, inclusion: { in: %w(active closed cancelled) }

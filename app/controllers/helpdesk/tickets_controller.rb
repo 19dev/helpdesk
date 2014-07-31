@@ -37,11 +37,13 @@ module Helpdesk
       @ticket = Helpdesk::Ticket.find(params[:id])
 
       respond_to do |format|
-        if params[:nolayout]
-          format.html { render partial: 'modal_form', locals: { ticket: @ticket } }
-        else
-          format.html # edit.html.erb
-        end
+        #if params[:nolayout]
+        #  format.html { render partial: 'modal_form', locals: { ticket: @ticket } }
+        #else
+        #  format.html # edit.html.erb
+        #end
+        format.html
+        format.js
         format.json { render json: @ticket }
       end
     end
@@ -54,7 +56,7 @@ module Helpdesk
       respond_to do |format|
         if @ticket.save
           create_action("created")
-          format.html { redirect_to @ticket, notice: t('simple_form.messages.defaults.created', model: Helpdesk::Ticket.model_name.human) }
+          format.html { redirect_to @ticket, notice: set_message("created") }
           format.json { render json: @ticket, status: :created, location: @ticket }
         else
           format.html { render action: "new" }
@@ -80,9 +82,9 @@ module Helpdesk
 
         respond_to do |format|
           if @ticket.update_attributes(ticket_params)
-            format.html { redirect_to @ticket, notice: t('simple_form.messages.defaults.updated', model: Helpdesk::Ticket.model_name.human) }
+            format.html { redirect_to @ticket, notice: set_message("updated") }
             format.json { head :no_content }
-            format.js   { flash.now[:notice] = t('simple_form.messages.defaults.updated', model: Helpdesk::Ticket.model_name.human) }
+            format.js   { flash.now[:notice] = set_message("updated") }
           else
             format.html { render action: "edit" }
             format.json { render json: @ticket.errors, status: :unprocessable_entity }
@@ -102,7 +104,7 @@ module Helpdesk
       @ticket.destroy
   
       respond_to do |format|
-        format.html { redirect_to tickets_url, notice: t('simple_form.messages.defaults.deleted', model: Helpdesk::Ticket.model_name.human) }
+        format.html { redirect_to tickets_url, notice: set_message("deleted") }
         format.json { head :no_content }
       end
     end
@@ -162,5 +164,8 @@ module Helpdesk
       params.require(:ticket).permit(:assigned_id, :close_date, :desc, :status, :title, :team_id)
     end
 
+    def set_message(message_code)
+      t("simple_form.messages.defaults.#{message_code}", model: Helpdesk::Ticket.model_name.human)      
+    end
   end
 end
