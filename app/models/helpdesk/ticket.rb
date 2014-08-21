@@ -10,6 +10,7 @@ module Helpdesk
 
     has_many   :ticket_actions, dependent: :destroy
     has_many   :discussions, class_name: Helpdesk.discussion_class, as: :target, dependent: :destroy
+    has_many   :documents, class_name: Logistics.document_class, as: :documented, dependent: :destroy
 
     validates :title, presence: true, length: { maximum: 255 }
     #validates :user_id, presence: true

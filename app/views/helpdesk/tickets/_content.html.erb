@@ -30,6 +30,21 @@
       </div>
     </div>
 
+    <div class="portlet box grey">
+      <% content_for(:portlet_actions, flush: true) do %>
+        <%= link_to arsiv.new_document_path(ticket_id: ticket.id), class: "btn green btn-sm" do %>
+          <%= iconed_link_label(Arsiv::Document.model_name.human, "fa-copy", "share") %>
+        <% end %>
+      <% end %>
+      <%= render "shared/portlet_title", title: Arsiv::Document.model_name.human(count: 2) %>
+
+      <div id="ticket_<%= ticket.id %>_documents_list" class="portlet-body">
+        <ul id="ticket_<%= ticket.id %>_documents">
+          <%= render partial: "arsiv/documents/document", collection: ticket.documents %>
+        </ul>
+      </div>
+    </div>
+
   </div>
 
 </div>
