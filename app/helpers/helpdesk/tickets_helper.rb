@@ -42,10 +42,10 @@ module Helpdesk
 		def ticket_actions_list_table(actions=@actions, options={})
 			content = content_tag :div, class: "table-responsive", id: "tickets_list_div" do
 				table_for actions, html: {class: "table table-bordered table-condensed", id: "tickets_list_table"} do
-				  column title: t("simple_form.labels.ticket.action_user"), html: { th: { class: "col-md-1" } } do |action|
+				  column title: "", html: { th: { class: "col-md-1" } } do |action|
 				  	user_mini_avatar(action.user)
 				  end
-				  column title: t("simple_form.labels.ticket.action_desc"), html: { th: { class: "col-md-5" } } do |action|
+				  column title: t("simple_form.labels.ticket.action_desc"), html: { th: { class: "col-md-9" } } do |action|
 				  	"#{user_name(action.user)} #{ticket_action_desc(action)}"
 				  end
 				  column title: t("simple_form.labels.ticket.action_date"), html: { th: { class: "col-md-2" } } do |action|

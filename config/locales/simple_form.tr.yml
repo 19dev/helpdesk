@@ -6,7 +6,7 @@ tr:
         title: "Talep Başlığı"
         desc: "Talep Detayları"
         team_id: "Sorumlu Ekip"
-        status: "Talep Durumu"
+        status: "Durumu"
         assigned: "Çözüm Sorumlusu"
         close_date: "Kapama Tarihi"
         created_at: "Talep Tarihi"

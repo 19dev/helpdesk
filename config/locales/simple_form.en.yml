@@ -6,7 +6,7 @@ en:
         title: "Request Title"
         desc: "Request Details"
         team_id: "Relevant Team"
-        status: "Request Status"
+        status: "Status"
         assigned: "Assigned User"
         close_date: "Close Date"
         created_at: "Request Date"
