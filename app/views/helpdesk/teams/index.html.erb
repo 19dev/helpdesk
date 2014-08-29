@@ -1,4 +1,11 @@
-<h1><%= Helpdesk::Team.model_name.human(count: 2) %></h1>
+<h1>
+	<%= Helpdesk::Team.model_name.human(count: 2) %>
+	<small class="pull-right">
+		<%= link_to helpdesk.tickets_path, class: "btn btn-link" do %>
+		  <%= Helpdesk::Ticket.model_name.human(count: 2) %> <i class="fa fa-level-up"></i>
+		<% end %>
+	</small>
+</h1>
 <hr>
 <div class="row">
 	

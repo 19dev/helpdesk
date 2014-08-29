@@ -18,8 +18,8 @@ en:
         assign_to_someone: "Assign to someone"
         change_responsible: "Change Assigned User"
       team:
-        title: "Request Title"
-        email: "email"
+        title: "Team Title"
+        email: "Group Email"
     placeholders:
       ticket:
         title: "Write a rememberable title..."

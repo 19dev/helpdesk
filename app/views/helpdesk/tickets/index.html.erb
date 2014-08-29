@@ -1,5 +1,9 @@
 <div id="tickets_index" class="row">
 
+  <% content_for(:breadcrumb_actions, flash: true) do %>
+  <%= render "helpdesk/tickets/setup_links" %>
+  <%end%>
+
   <%= render "shared/page_title", page_title: Helpdesk::Ticket.model_name.human(count: 2), page_small_title: "", model_name: "tickets", model_path: "helpdesk/tickets" %>
 
   <div class="inbox">

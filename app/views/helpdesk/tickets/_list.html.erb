@@ -1,1 +1,33 @@
-<%= tickets_list_table(objects) %>
+<div id="tickets_list_div" class="table-responsive">
+	<table class="table table-striped table-bordered table-hover" id="tickets_list_table">
+	  <thead>
+	  	<th class="col-md-2"><%= t("simple_form.labels.ticket.reference") %></th>
+	  	<th class="col-md-2"><%= t("simple_form.labels.ticket.title") %></th>
+	  	<th class="col-md-2"><%= t("simple_form.labels.ticket.user") %></th>
+	  	<th class="col-md-2"><%= t("simple_form.labels.ticket.created_at") %></th>
+	  	<th class="col-md-1"><%= t("simple_form.labels.ticket.status") %></th>
+	  	<th class="col-md-2"><%= t("simple_form.labels.ticket.assigned") %></th>
+	  	<th class="col-md-1"><%= t("simple_form.labels.ticket.close_date") %></th>
+	  </thead>
+	  <tbody>
+	    <% objects.each do |ticket| %>
+		  	<tr>
+		  		<td><%= link_to ticket.reference, helpdesk.ticket_path(ticket) %></td>
+		  		<td><%= ticket.title %></td>
+		  		<td><%= user_name(ticket.user) if ticket.user %></td>
+		  		<td><%= created_time(ticket.created_at.to_time) %></td>
+		  		<td><%= ticket.status %></td>
+		  		<td><%= user_name(ticket.assigned) if ticket.assigned %></td>
+		  		<td><%= ticket.close_date %></td>
+		  	</tr>
+		  <% end %>
+	  </tbody>
+	  
+	 </table>
+
+	<% if objects.respond_to? :current_page %>
+	  <ul class="pagination">
+	   	<%= paginate objects, remote: true %>
+	  </ul>
+	<% end %>
+</div>

@@ -18,8 +18,8 @@ tr:
         assign_to_someone: "Çözüm Sorumlusu Belirleyin"
         change_responsible: "Çözüm Sorumlusunu Değiştir"
       team:
-        title: "Talep Başlığı"
-        email: "email"
+        title: "Ekip Adı"
+        email: "Grup Maili"
     placeholders:
       ticket:
         title: "Kolayca anlaşılabilecek bir başlık belirtin"

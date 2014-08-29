@@ -25,6 +25,7 @@ module Helpdesk
     scope :latest, order("created_at desc")
 
     before_create :set_initials
+    after_create  :send_email_to_team
 
     def self.search(search_id)
       search = Roster::Search.find(search_id)
@@ -53,6 +54,10 @@ module Helpdesk
 private
     def set_initials
       self.reference = Nimbos::Patron.generate_counter("Ticket", nil, nil)
+    end
+
+    def send_email_to_team
+      Resque.enqueue(TicketMailerWorker, self.id)
     end
   end
 end

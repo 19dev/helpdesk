@@ -26,7 +26,7 @@
       <% end %>    
       <%= render "shared/portlet_title", title: Helpdesk::TicketAction.model_name.human(count: 2) %>
       <div id="Helpdesk::Ticket_<%= ticket.id %>_actions_list" class="portlet-body">
-        <%= ticket_actions_list_table(ticket.ticket_actions) %>
+        <%= render "ticket_actions_list", objects: ticket.ticket_actions %>
       </div>
     </div>
 
