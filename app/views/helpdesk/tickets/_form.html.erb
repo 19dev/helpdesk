@@ -19,7 +19,7 @@
       </div>
       <div class="form-actions">
         <%= f.submit t("simple_form.helpers.submit.defaults.create"), class: "btn btn-success" %>
-        <%= link_to t("simple_form.helpers.defaults.cancel"), helpdesk.tickets_path, class: "btn" %>
+        <%= render "shared/cancel_button" %>
       </div>
     <% end %>
   </div>
