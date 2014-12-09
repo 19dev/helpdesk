@@ -4,7 +4,7 @@
     <h2>
     	<%= team.title %> <small class="text-muted"><%= team.email %></small>
     	<span>
-        <%= link_to team, method: :delete, remote: true, data: { confirm: t("simple_form.messages.defaults.destroy_confirm") }, title: t("simple_form.helpers.defaults.delete"), class: "btn" do %>
+        <%= link_to helpdesk.team_path(team), method: :delete, remote: true, data: { confirm: t("simple_form.messages.defaults.destroy_confirm") }, title: t("simple_form.helpers.defaults.delete"), class: "btn" do %>
      	    <i class="fa fa-trash-o"></i>
   	    <% end %>
   	  </span>
