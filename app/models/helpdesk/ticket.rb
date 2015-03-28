@@ -22,7 +22,7 @@ module Helpdesk
     #validates_associated :assigned
 
     default_scope { where(patron_id: Nimbos::Patron.current_id) }
-    scope :latest, order("created_at desc")
+    scope :latest, -> { order("created_at desc") }
 
     before_create :set_initials
     after_create  :send_email_to_team
@@ -57,7 +57,7 @@ private
     end
 
     def send_email_to_team
-      Resque.enqueue(TicketMailerWorker, self.id)
+      Resque.enqueue(TicketMailerWorker, { ticket_id: self.id, patron_id: self.patron_id })
     end
   end
 end
